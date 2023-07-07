@@ -291,6 +291,41 @@
                     </div>
                 </div>
             </div>
+            <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
+                <a href="{{ route('subCategoria.index') }}">
+                    <div
+                        class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                        <div class="flex-auto p-4">
+                            <div class="flex flex-row -mx-3">
+                                <div class="flex-none w-2/3 max-w-full px-3">
+                                    <div>
+                                        <p
+                                            class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
+                                            Gestor</p>
+                                        <h5 class="mb-2 font-bold dark:text-white">Sub Categorías</h5>
+                                        <p class="mb-0 dark:text-white dark:opacity-60">
+                                            <span
+                                                class="text-sm font-bold leading-normal text-emerald-500">Sub Categorias</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="px-3 text-right basis-1/3">
+                                    <div
+                                        class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-red-600 to-orange-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" class="bi bi-tag-fill text-lg relative top-3.5 text-white"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
         </div>
 
 

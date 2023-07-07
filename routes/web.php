@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\subCategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
@@ -71,6 +72,26 @@ Route::get('/branch', [MarcasController::class, 'index'])->name('marcas.index');
 Route::get('/newBranch', [MarcasController::class, 'create'])->name('marcas.create');
 //Ruta para registrar la marca en la tabla
 Route::post('/newBranch', [MarcasController::class, 'store']);
+//Ruta para mandar a la vista de editar marca
+Route::get('/editBranch/{id_branch}', [MarcasController::class, 'view'])->name('marcas.edit');
+//Ruta para modificar la marca en la base de datos
+Route::post('/updateBranch', [MarcasController::class, 'update'])->name('marcas.update');
+//Ruta para eliminar la marca de la base de datos
+Route::get('/deleteBranch/{id_branch}', [MarcasController::class, 'delete'])->name('marcas.delete');
+
+
+//Ruta para retornar la vista de subcategorias
+Route::get('/subCategory', [subCategoriaController::class, 'index'])->name('subCategoria.index');
+//Ruta para retornar a la vista de añadir subcategoria
+Route::get('/newSubCategory', [subCategoriaController::class, 'create'])->name('subCategorias.create');
+//Ruta para crear subcategorias en la base de datos
+Route::post('/newSubCategory', [subCategoriaController::class, 'store'])->name('subCategorias.create');
+//Ruta para retornar a la vista de editar subcategoria
+Route::get('/editSubCategory/{id_subCategory}', [subCategoriaController::class, 'view'])->name('subCategorias.edit');
+//Ruta para actualizar la subcategoria
+Route::post('/updateSubCategory', [subCategoriaController::class, 'update'])->name('subCategorias.update');
+//Ruta para eliminar la subcategoria de la base de datos
+Route::get('/deleteSubCategory/{id_subCategory}', [subCategoriaController::class, 'delete'])->name('subCategorias.delete');
 
 
 
