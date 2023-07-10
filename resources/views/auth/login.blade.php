@@ -43,6 +43,7 @@
                 <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-blue-500 to-violet-500 opacity-60"></span>
                 <h4 class="z-20 mt-12 font-bold text-white">"Tú atención al cliente es nuestra prioridad"</h4>
                 <p class="z-20 text-white ">Alcanza tus metas en tu negocio con este punto de venta.</p>
+                <p class="z-20 text-white ">Integrantes del equipo: <br> Sonia Lizbeth Muñoz B.    Jorge Jhovan Rodriguez M.</p>
               </div>
             </div>
           </div>

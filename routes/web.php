@@ -10,6 +10,7 @@ use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\VentasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,13 @@ Route::post('/updateSubCategory', [subCategoriaController::class, 'update'])->na
 //Ruta para eliminar la subcategoria de la base de datos
 Route::get('/deleteSubCategory/{id_subCategory}', [subCategoriaController::class, 'delete'])->name('subCategorias.delete');
 
+//Ruta para retornar la vista de  listdo de ventas
+Route::get('/ventas', [VentasController::class,'index'])->name('ventas.index');
+
+//Ruta para retornar la vista de detalles de ventas
+Route::get('/ventasDetalles',[VentasController::class,'show'])->name('ventas.show');
+//Ruta para retornar la vista de devoluciones
+Route::get('/ventasDevolucion',[VentasController::class,'mostrar'])->name('ventas.devoluciones');
 
 
 //Ruta para procesar la imagenes en el controlador
