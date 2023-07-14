@@ -1,17 +1,18 @@
 <?php
 
-use App\Http\Controllers\subCategoriaController;
-use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MarcasController;
+use App\Http\Controllers\VentasController;
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
-use App\Http\Controllers\VentasController;
+use App\Http\Controllers\subCategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,9 +96,9 @@ Route::post('/updateSubCategory', [subCategoriaController::class, 'update'])->na
 //Ruta para eliminar la subcategoria de la base de datos
 Route::get('/deleteSubCategory/{id_subCategory}', [subCategoriaController::class, 'delete'])->name('subCategorias.delete');
 
+
 //Ruta para retornar la vista de  listdo de ventas
 Route::get('/ventas', [VentasController::class,'index'])->name('ventas.index');
-
 //Ruta para retornar la vista de detalles de ventas
 Route::get('/ventasDetalles',[VentasController::class,'show'])->name('ventas.show');
 //Ruta para retornar la vista de devoluciones
@@ -108,6 +109,13 @@ Route::get('/suppliers',[SupplierController::class,'index'])->name('supplier.ind
 //Ruta para retornar a la vista de añadir proveedor
 Route::get('/suppliers/create',[SupplierController::class,'create'])->name('supplier.create');
 
+
+//Ruta para retonar la vista de clientes
+Route::get('/clientes',[ClientesController::class,'index'])->name('clientes.index');
+//Ruta para rtornar a la vista de añadir clientes
+Route::get('/clientes/nuevo',[ClientesController::class,'create'])->name('clientes.create');
+//Ruta para retornar a la vista de añadir clientes
+Route::post('/clientes/nuevo',[ClientesController::class,'store'])->name('clientes.create');
 
 
 //Ruta para procesar la imagenes en el controlador
