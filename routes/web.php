@@ -107,6 +107,14 @@ Route::get('/ventasDevolucion',[VentasController::class,'mostrar'])->name('venta
 Route::get('/suppliers',[SupplierController::class,'index'])->name('supplier.index');
 //Ruta para retornar a la vista de añadir proveedor
 Route::get('/suppliers/create',[SupplierController::class,'create'])->name('supplier.create');
+//Ruta para almacenar proveedor en la base de datos
+Route::post('/suppliers/create',[SupplierController::class,'store']);
+//Ruta para retornar la vista de editar proveedor
+Route::get('/suppliers/update/{id_proveedor}',[SupplierController::class,'edit'])->name('supplier.edit');
+//Ruta para actualizar la informacion del proveedor
+Route::post('/suppliers/update',[SupplierController::class,'update'])->name('supplier.update');
+//Ruta para eliminar el proveedor
+Route::get('/suppliers/delete/{id_proveedor}',[SupplierController::class,'delete'])->name('supplier.delete');
 
 
 

@@ -38,7 +38,7 @@
                                     <div class="flex-auto p-6">
                                         <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">
                                             Información de categoría</p>
-                                        <form action="{{route('categorias.create')}}" method="POST" novalidate>
+                                        <form action="{{ route('categorias.create') }}" method="POST" novalidate>
                                             @csrf
                                             <div class="flex flex-wrap -mx-3">
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
@@ -46,14 +46,15 @@
                                                         <label for="nombre"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
                                                             de categoria</label>
-                                                            @error('nombre')
-                                                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+
+                                                        <input type="text" name="nombre" value="{{ old('nombre') }}"
+                                                            placeholder="Ingrese nombre de categoria"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        @error('nombre')
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="nombre"
-                                                            placeholder="Ingrese nombre de categoria"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
@@ -61,44 +62,51 @@
                                                         <label for="codigo"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Código
                                                             de categoria</label>
-                                                            @error('codigo')
-                                                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+
+                                                        <input type="text" placeholder="Ingrese código de cateogira"
+                                                            value="{{ old('codigo') }}" name="codigo"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        @error('codigo')
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" placeholder="Ingrese código de cateogira"
-                                                            name="codigo"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="descripcion"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Descripción</label>
-                                                            @error('descripcion')
-                                                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+
+                                                        <input type="text" name="descripcion"
+                                                            value="{{ old('descripcion') }}"
+                                                            placeholder="Ingrese descripción de categoria"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        @error('descripcion')
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                            <input type="text" name="descripcion"
-                                                            placeholder="Ingrese descripción de categoria"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                     @error('imagen')
-                                                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                                                        {{ $message }}
-                                                    </p>
-                                                @enderror
+                                                        <p class="text-red-500 my-2 rounded-lg text-sm p-2 text-center">
+                                                            {{ $message }}
+                                                        </p>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <input type="hidden" name="imagen">
-                                            <div class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                                            <div
+                                                class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                                                 <div class="flex justify-end flex-wrap -mx-3">
-                                                  <div class="flex-none w-2/2 max-w-full text-right">
-                                                    <button type="submit" class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25" href="javascript:;"> <i class="fas fa-plus" aria-hidden="true"> </i>&nbsp;&nbsp;Registrar categoria</button>
-                                                  </div>
+                                                    <div class="flex-none w-2/2 max-w-full text-right">
+                                                        <button type="submit"
+                                                            class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
+                                                            href="javascript:;"> <i class="fas fa-plus" aria-hidden="true">
+                                                            </i>&nbsp;&nbsp;Registrar categoria</button>
+                                                    </div>
                                                 </div>
-                                              </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -107,10 +115,11 @@
                                 <div
                                     class="border-black/12.5 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                                     <div class="flex-auto p-4">
-                                        <form action="{{ route('imagen.store') }}" method="POST" enctype="multipart/form-data" id="dropzone"
-                                        class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
-                                        @csrf
-                                    </form>
+                                        <form action="{{ route('imagen.store') }}" method="POST"
+                                            enctype="multipart/form-data" id="dropzone"
+                                            class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </div>
                             </div>

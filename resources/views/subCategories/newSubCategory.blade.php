@@ -46,27 +46,22 @@
                                                         <label for="nombre"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
                                                             de sub categoria</label>
+
+                                                        <input type="text" name="nombre" value="{{ old('nombre') }}"
+                                                            placeholder="Ingrese nombre de sub categoria"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('nombre')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="nombre"
-                                                            placeholder="Ingrese nombre de sub categoria"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="categoria"
-                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Categoria padre</label>
-                                                        @error('categoria')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                                                                {{ $message }}
-                                                            </p>
-                                                        @enderror
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Categoria
+                                                            padre</label>
                                                         <div class="relative">
                                                             <select
                                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
@@ -91,7 +86,11 @@
                                                                 </svg>
                                                             </div>
                                                         </div>
-
+                                                        @error('categoria')
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
@@ -99,34 +98,34 @@
                                                         <label for="codigo"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Código
                                                             de sub categoria</label>
+
+                                                        <input type="text" placeholder="Ingrese código de sub categoria"
+                                                            value="{{ old('codigo') }}" name="codigo"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('codigo')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" placeholder="Ingrese código de sub categoria"
-                                                            name="codigo"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="descripcion"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Descripción</label>
+
+                                                        <input type="text" name="descripcion"
+                                                            value="{{ old('descripcion') }}"
+                                                            placeholder="Ingrese descripción de sub categoria"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('descripcion')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="descripcion"
-                                                            placeholder="Ingrese descripción de sub categoria"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                     @error('imagen')
-                                                        <p
-                                                            class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                        <p class="text-red-500 my-2 text-sm text-center">
                                                             {{ $message }}
                                                         </p>
                                                     @enderror
