@@ -48,16 +48,15 @@
                                                             del cliente</label>
                                                         @error('nombre')
                                                             <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="nombre"
+                                                        <input type="text" name="nombre" value="{{old('nombre')}}"
                                                             placeholder="Ingrese nombre del cliente"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="codigo"
@@ -66,14 +65,16 @@
                                                         </label>
                                                         @error('codigo')
                                                             <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="number" name="codigo"
+                                                        <input type="number" name="codigo" value="{{old('codigo')}}"
                                                             placeholder="Ingrese el codigo del cliente"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
+                                                </div>
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="empresa"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -81,14 +82,16 @@
                                                         </label>
                                                         @error('empresa')
                                                             <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="empresa"
+                                                        <input type="text" name="empresa" value="{{old('empresa')}}"
                                                             placeholder="Ingrese la empresa del cliente"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
+                                                </div>
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="telefono"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -96,14 +99,16 @@
                                                         </label>
                                                         @error('telefono')
                                                             <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="number" name="telefono"
+                                                        <input type="number" name="telefono" value="{{old('telefono')}}"
                                                             placeholder="Ingrese el telefono del cliente"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
+                                                </div>
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="email"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -111,24 +116,23 @@
                                                         </label>
                                                         @error('email')
                                                             <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="email" name="email"
+                                                        <input type="email" name="email" value="{{old('email')}}"
                                                             placeholder="Ingrese el telefono del cliente"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
-                                                    @error('imagen')
-                                                        <p
-                                                            class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                                                            {{ $message }}
-                                                        </p>
-                                                    @enderror
                                                 </div>
+                                                @error('imagen')
+                                                    <p
+                                                        class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                        {{ $message }}
+                                                    </p>
+                                                @enderror
                                             </div>
-                                            
-                                            <input type="hidden" name="imagen">
+                                            <input type="hidden" name="imagen" value="{{old('imagen')}}">
                                             <div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                                                 <div class="flex justify-end flex-wrap -mx-3">

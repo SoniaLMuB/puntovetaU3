@@ -113,9 +113,16 @@ Route::get('/suppliers/create',[SupplierController::class,'create'])->name('supp
 //Ruta para retonar la vista de clientes
 Route::get('/clientes',[ClientesController::class,'index'])->name('clientes.index');
 //Ruta para rtornar a la vista de añadir clientes
-Route::get('/clientes/nuevo',[ClientesController::class,'create'])->name('clientes.create');
+Route::get('/clientes/create',[ClientesController::class,'create'])->name('clientes.create');
 //Ruta para retornar a la vista de añadir clientes
-Route::post('/clientes/nuevo',[ClientesController::class,'store'])->name('clientes.create');
+Route::post('/clientes/create',[ClientesController::class,'store'])->name('clientes.create');
+//Ruta para retornar la vista de editar cliente
+Route::get('/clientes/update/{id_cliente}',[ClientesController::class,'edit'])->name('clientes.edit');
+//Ruta para actualizar la info del cliente
+Route::post('/clientes/update',[ClientesController::class,'update'])->name('clientes.update');
+//Ruta para eliminar el cliente
+Route::get('/clientes/delete/{id_cliente}',[ClientesController::class,'delete'])->name('clientes.delete');
+
 
 
 //Ruta para procesar la imagenes en el controlador

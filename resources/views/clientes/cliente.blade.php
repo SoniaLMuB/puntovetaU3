@@ -46,28 +46,31 @@
                                             Empresa</th>
                                         <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Teléfo</th>
+                                            Teléfono</th>
                                         <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Correo</th>
+                                            <th
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- 
-                                    @if (count($marcas)>0)
-                                        @foreach ($marcas as $marca)
+                                    
+                                    @if (count($clientes)>0)
+                                        @foreach ($clientes as $cliente)
                                         <tr>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                 <div class="flex px-2 py-1">
                                                     <div>
-                                                        <img src="{{ asset('uploads') . '/' . $marca->imagen }}"
+                                                        <img src="{{ asset('uploads') . '/' . $cliente->imagen }}"
                                                             class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-in-out h-9 w-9 rounded-xl"
                                                             alt="user1" />
                                                     </div>
                                                     <div class="flex flex-col justify-center">
                                                         <h6 class="mb-0 text-sm leading-normal dark:text-white">
-                                                            {{$marca->nombre}}
+                                                            {{$cliente->nombre}}
                                                         </h6>
                                                     </div>
                                                 </div>
@@ -76,13 +79,34 @@
                                                 class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                 <p
                                                     class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
-                                                    {{$marca->descripcion}}
+                                                    {{$cliente->codigo}}
+                                                </p>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                <p
+                                                    class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                                    {{$cliente->empresa}}
+                                                </p>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                <p
+                                                    class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                                    {{$cliente->telefono}}
+                                                </p>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                <p
+                                                    class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                                    {{$cliente->email}}
                                                 </p>
                                             </td>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                 <div class="flex w-full justify-center">
-                                                    <a href="{{route('marcas.edit',$marca->id)}}">
+                                                    <a href="{{route('clientes.edit',$cliente->id)}}">
                                                         <svg style="margin-right: 30px; color:green"
                                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-pencil-square"
@@ -93,7 +117,7 @@
                                                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                         </svg>
                                                     </a>
-                                                    <a href="{{route('marcas.delete',$marca->id)}}">
+                                                    <a href="{{route('clientes.delete',$cliente->id)}}">
                                                         <svg style="color:red;"
                                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-trash3-fill"
@@ -112,12 +136,12 @@
                                         <td colspan="3">
                                             <div class="flex justify-center text-sm">
                                                 <div>
-                                                    <p class="font-semibold">No hay marcas</p>
+                                                    <p class="font-semibold">No hay clientes</p>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    @endif --}}
+                                    @endif 
 
                                 </tbody>
                             </table>
