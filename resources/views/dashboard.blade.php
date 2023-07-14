@@ -183,7 +183,7 @@
                             </div>
                             <div class="px-3 text-right basis-1/3">
                                 <div
-                                    class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-purple-500 to-pink-500">
+                                    class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-blue-500 to-violet-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         fill="currentColor"
                                         class="bi bi-file-earmark-bar-graph-fill text-lg relative top-3.5 text-white"
@@ -216,7 +216,7 @@
                             </div>
                             <div class="px-3 text-right basis-1/3">
                                 <div
-                                    class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-green-500 to-blue-400">
+                                    class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-blue-500 to-violet-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         fill="currentColor"
                                         class="bi bi-credit-card-2-back-fill text-lg relative top-3.5 text-white"
@@ -295,6 +295,9 @@
                 </div>
             </div>
             <br>
+
+        </div>
+        <div class="flex flex-wrap mt-6 -mx-3">
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                 <a href="{{ route('subCategoria.index') }}">
                     <div
@@ -331,7 +334,6 @@
 
             </div>
         </div>
-
 
         <footer class="pt-4">
             <div class="w-full px-6 mx-auto">
