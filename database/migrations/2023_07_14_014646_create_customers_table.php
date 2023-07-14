@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('empresa');
             $table->string('email');
             $table->string('telefono');
-            $table->string('pais');
             $table->string('imagen');
             $table->timestamps();
         });

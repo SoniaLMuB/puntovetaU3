@@ -1,6 +1,9 @@
 // import './bootstrap';
 import Dropzone from 'dropzone';
 
+import { Select, initTE } from "tw-elements";
+initTE({ Select });
+
 Dropzone.autoDiscover = false;
 // Configuración del dropzone
 const dropzone = new Dropzone('#dropzone', {

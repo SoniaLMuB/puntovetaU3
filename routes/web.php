@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\subCategoriaController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
@@ -101,6 +102,12 @@ Route::get('/ventas', [VentasController::class,'index'])->name('ventas.index');
 Route::get('/ventasDetalles',[VentasController::class,'show'])->name('ventas.show');
 //Ruta para retornar la vista de devoluciones
 Route::get('/ventasDevolucion',[VentasController::class,'mostrar'])->name('ventas.devoluciones');
+
+//Ruta para retonar la vista de proveedores
+Route::get('/suppliers',[SupplierController::class,'index'])->name('supplier.index');
+//Ruta para retornar a la vista de añadir proveedor
+Route::get('/suppliers/create',[SupplierController::class,'create'])->name('supplier.create');
+
 
 
 //Ruta para procesar la imagenes en el controlador

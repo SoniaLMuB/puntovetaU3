@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('codigo');
             $table->string('email');
             $table->string('telefono');
-            $table->string('pais');
             $table->string('imagen');
         });
     }
@@ -33,7 +32,6 @@ return new class extends Migration
             $table->dropColumn('codigo');
             $table->dropColumn('email');
             $table->dropColumn('telefono');
-            $table->dropColumn('pais');
             $table->dropColumn('imagen');
         });
     }
