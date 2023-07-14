@@ -10,6 +10,11 @@
     </div>
 @endsection
 
+<!-- Agrega el elemento a la stack en app.blade.php -->
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
+
 @section('contenido')
     <div class="w-full px-6 py-6 mx-auto">
         <!-- table 1 -->
@@ -141,7 +146,7 @@
                                         <td colspan="9">
                                             <div class="flex justify-center text-sm">
                                                 <div>
-                                                    <p class="font-semibold">No hay categorias</p>
+                                                    <p class="font-semibold">No hay productos</p>
                                                 </div>
                                             </div>
                                         </td>

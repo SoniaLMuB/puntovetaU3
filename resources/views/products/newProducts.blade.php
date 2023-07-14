@@ -34,50 +34,45 @@
                                     <div class="flex-auto p-6">
                                         <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">
                                             Información de producto</p>
-                                        <form action="{{route('productos.create')}}" method="POST" novalidate>
-                                          @csrf
+                                        <form action="{{ route('productos.create') }}" method="POST" novalidate>
+                                            @csrf
                                             <div class="flex flex-wrap -mx-3">
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="nombre"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
                                                             de producto</label>
+
+                                                        <input type="text" name="nombre" value="{{ old('nombre') }}"
+                                                            placeholder="Ingrese nombre de producto"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('nombre')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="nombre"
-                                                            placeholder="Ingrese nombre de producto"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="codigo"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Código</label>
+
+                                                        <input type="text" name="codigo" value="{{ old('codigo') }}"
+                                                            placeholder="Ingrese código del producto"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('codigo')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="codigo"
-                                                            placeholder="Ingrese código del producto"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="categoria"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Categoria</label>
-                                                        @error('categoria')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                                                                {{ $message }}
-                                                            </p>
-                                                        @enderror
+
                                                         <div class="relative">
                                                             <select
                                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
@@ -102,19 +97,18 @@
                                                                 </svg>
                                                             </div>
                                                         </div>
-
+                                                        @error('categoria')
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="marca"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Marca</label>
-                                                        @error('marca')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-                                                                {{ $message }}
-                                                            </p>
-                                                        @enderror
+
                                                         <div class="relative">
                                                             <select
                                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
@@ -139,6 +133,11 @@
                                                                 </svg>
                                                             </div>
                                                         </div>
+                                                        @error('marca')
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,15 +147,15 @@
                                                         <label for="precio_venta"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Precio
                                                             venta</label>
+
+                                                        <input type="number" name="precio_venta"
+                                                            value="{{ old('precio_venta') }}" placeholder="Ingrese precio"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('precio_venta')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="number" name="precio_venta"
-                                                            placeholder="Ingrese precio"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
@@ -164,34 +163,36 @@
                                                         <label for="precio_compra"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Precio
                                                             Compra</label>
+
+                                                        <input type="number" name="precio_compra"
+                                                            value="{{ old('precio_compra') }}"
+                                                            placeholder="Ingrese precio"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('precio_compra')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="number" name="precio_compra"
-                                                            placeholder="Ingrese precio"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="stock"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Stock</label>
+
+                                                        <input type="number" name="stock" placeholder="Ingrese stock"
+                                                            value="{{ old('stock') }}"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('stock')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="number" name="stock" placeholder="Ingrese stock"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                             </div>
                                             @error('imagen')
-                                                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                <p class="text-red-500 my-2 text-sm text-center">
                                                     {{ $message }}
                                                 </p>
                                             @enderror
@@ -212,7 +213,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-full max-w-full px-3 mt-0 lg:w-5/12 lg:flex-none">
+                            <div class="w-full max-w-full px-3 mt-0 md:w-5/12 lg:flex-none">
                                 <div
                                     class="border-black/12.5 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                                     <div class="flex-auto p-4">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('titulo')
-    Añadir marca
+    Editar proveedor
 @endsection
 <!-- Agrega el elemento a la stack en app.blade.php -->
 @push('styles')
@@ -25,7 +25,7 @@
                     <div class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div class="flex flex-wrap -mx-3">
                             <div class="flex items-center flex-none w-1/2 max-w-full px-3">
-                                <h4 class="mb-0 dark:text-white">Añadir marca</h4>
+                                <h4 class="mb-0 dark:text-white">Editar proveedor</h4>
                             </div>
                         </div>
                     </div>
@@ -37,47 +37,80 @@
                                     class="relative flex flex-col min-w-0 break-words bg-white dark:bg-slate-850  dark:bg-gray-950 border-black-125 rounded-2xl bg-clip-border">
                                     <div class="flex-auto p-6">
                                         <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">
-                                            Información de marca</p>
-                                        <form action="{{ route('marcas.create') }}" method="POST" novalidate>
+                                            Información de proveedor</p>
+                                        @foreach ($proveedor as $data)
+                                        <form action="{{ route('supplier.update') }}" method="POST" novalidate>
                                             @csrf
+                                            <input type="hidden" name="id" id="" value="{{$data->id}}">
                                             <div class="flex flex-wrap -mx-3">
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="nombre"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
-                                                            de marca</label>
+                                                            de proveedor</label>
 
-                                                        <input type="text" name="nombre" value="{{ old('nombre') }}"
-                                                            placeholder="Ingrese nombre de categoria"
+                                                        <input type="text" name="nombre" value="{{$data->nombre}}"
+                                                            placeholder="Ingrese nombre de proveedor"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('nombre')
-                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
-                                                        <label for="descripcion"
-                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Descripción</label>
-                                                        @error('descripcion')
-                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                        <label for="codigo"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Código</label>
+
+                                                        <input type="text" name="codigo" value="{{$data->codigo}}"
+                                                            placeholder="Ingrese código de proveedor"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        @error('codigo')
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="descripcion" value="{{old('descripcion')}}"
-                                                            placeholder="Ingrese descripción de categoria"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
-                                                    @error('imagen')
-                                                        <p class="text-red-500 my-2 text-sm text-center">
-                                                            {{ $message }}
-                                                        </p>
-                                                    @enderror
+                                                </div>
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                                    <div class="mb-4">
+                                                        <label for="telefono"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Teléfono</label>
+
+                                                        <input type="text" name="telefono" value="{{$data->telefono}}"
+                                                            placeholder="Ingrese teléfono de proveedor"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        @error('telefono')
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                                    <div class="mb-4">
+                                                        <label for="email"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Email</label>
+
+                                                        <input type="email" name="email" value="{{$data->email}}"
+                                                            placeholder="Ingrese email de proveedor"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        @error('email')
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="imagen">
+                                            @error('imagen')
+                                                <p class="text-red-500 my-2 rounded-lg text-sm text-center">
+                                                    {{ $message }}
+                                                </p>
+                                            @enderror
+                                            <input type="hidden" name="imagen" value="{{$data->imagen}}">
                                             <div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                                                 <div class="flex justify-end flex-wrap -mx-3">
@@ -85,7 +118,8 @@
                                                         <button type="submit"
                                                             class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
                                                             href="javascript:;"> <i class="fas fa-plus" aria-hidden="true">
-                                                            </i>&nbsp;&nbsp;Registrar categoria</button>
+                                                            </i>&nbsp;&nbsp;Actualizar
+                                                            proveedor</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,6 +136,8 @@
                                             class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
                                             @csrf
                                         </form>
+                                        @endforeach    
+
                                     </div>
                                 </div>
                             </div>
