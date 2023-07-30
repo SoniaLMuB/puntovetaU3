@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecibosController;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\PostController;
@@ -132,6 +133,8 @@ Route::post('/clientes/update',[ClientesController::class,'update'])->name('clie
 //Ruta para eliminar el cliente
 Route::get('/clientes/delete/{id_cliente}',[ClientesController::class,'delete'])->name('clientes.delete');
 
+//Ruta para la vista de recibos
+Route::get('/recibos',[RecibosController::class,'index'])->name('recibos.index');
 
 
 //Ruta para procesar la imagenes en el controlador
