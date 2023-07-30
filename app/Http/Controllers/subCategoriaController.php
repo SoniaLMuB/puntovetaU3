@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Subcategoria;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class subCategoriaController extends Controller
 {
@@ -54,7 +55,7 @@ class subCategoriaController extends Controller
             'creado_por' => auth()->user()->username
         ]);
 
-        return redirect()->route('subCategoria.index');
+        return redirect()->route('subCategoria.index')->with('success','La Subcategoría se ha creado correctamente');
     }
 
     //Funcion para retornar la vista de editar subcategoria
@@ -88,7 +89,7 @@ class subCategoriaController extends Controller
             'creado_por' => auth()->user()->username
         ]);
 
-        return redirect()->route('subCategoria.index');
+        return redirect()->route('subCategoria.index')->with('success','La Subcategoría se ha actualizado correctamente');
 
     }
 
@@ -97,7 +98,7 @@ class subCategoriaController extends Controller
     {
         //Se busca la categoria en el modelo y se elimina
         Subcategoria::find($id_subcategoria)->delete();
-        return redirect()->route('subCategoria.index');
+        return redirect()->route('subCategoria.index')->with('success','La Subcategoría se ha eliminado correctamente');
 
     }
 }

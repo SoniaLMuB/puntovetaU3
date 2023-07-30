@@ -41,6 +41,7 @@
 
     {{-- Scripts de tailwind --}}
     @vite('resources/js/app.js')
+
     <title>@yield('titulo')</title>
 </head>
 
@@ -539,7 +540,9 @@
 				.columns.adjust()
 				.responsive.recalc();
 		});
+        
 	</script>
+    @include('sweetalert::alert')
 
 </body>
 

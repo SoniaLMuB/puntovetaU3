@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MarcasController extends Controller
 {
@@ -43,7 +44,7 @@ class MarcasController extends Controller
             'imagen' => $request->imagen
         ]);
         //Se retorna a la vista de marcas
-        return redirect()->route('marcas.index');
+        return redirect()->route('marcas.index')->with('success','La marca se ha creado correctamente');
     }
 
     //Funcion para retornar a la vista de retornar marca
@@ -71,7 +72,7 @@ class MarcasController extends Controller
         ]);
 
         //Se retorna a la vista de marcas
-        return redirect()->route('marcas.index');
+        return redirect()->route('marcas.index')->with('success','La marca se ha actualizado correctamente');
     }
 
     //Funcion para eliminar la marca
@@ -79,7 +80,7 @@ class MarcasController extends Controller
     {
         //Se busca la categoria en el modelo y se elimina
         Marca::find($id_marca)->delete();
-        return redirect()->route('marcas.index');
+        return redirect()->route('marcas.index')->with('success','La marca se ha eliminado correctamente');
 
     }
 }

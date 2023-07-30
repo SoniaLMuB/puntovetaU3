@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SupplierController extends Controller
 {
@@ -45,7 +46,7 @@ class SupplierController extends Controller
             'imagen'=>$request->imagen
         ]);
 
-        return redirect()->route('supplier.index');
+        return redirect()->route('supplier.index')->with('success','El proveedor se ha creado correctamente');
 
     }
 
@@ -79,7 +80,7 @@ class SupplierController extends Controller
             ]);
     
             //Se retorna a la vista de proveedores
-            return redirect()->route('supplier.index');
+            return redirect()->route('supplier.index')->with('success','El proveedor se ha actualizado correctamente');
         }
 
         //Funcion para eliminar el proveedor
@@ -87,7 +88,7 @@ class SupplierController extends Controller
         {
             //Se busca el proveedor en el modelo y se elimina
             Supplier::find($id_proveedor)->delete();
-            return redirect()->route('supplier.index');
+            return redirect()->route('supplier.index')->with('success','El proveedor se ha eliminado correctamente');
     
         }
 }

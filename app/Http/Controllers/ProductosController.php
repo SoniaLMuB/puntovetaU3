@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Marca;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductosController extends Controller
 {
@@ -19,6 +20,10 @@ class ProductosController extends Controller
     //Funcion para retornar la vista de productos
     public function index(){
         $productos=Producto::all();
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+        
         return view('products.products',["productos"=>$productos]);
     }
 
@@ -56,7 +61,7 @@ class ProductosController extends Controller
             'imagen'=>$request->imagen
         ]);
 
-        return redirect()->route('productos.index');
+        return redirect()->route('productos.index')->with('success','El producto fue creado correctamente');
     }
 
     //Funcion para retornar la vista de detalle producto
@@ -98,7 +103,7 @@ class ProductosController extends Controller
             'precio_compra'=>$request->precio_compra,
             'imagen'=>$request->imagen
         ]);
-        return redirect()->route('productos.index');
+        return redirect()->route('productos.index')->with('success','El producto se ha actualizado correctamente');
 
     }
 
@@ -106,7 +111,7 @@ class ProductosController extends Controller
     public function delete($id_producto){
         //Se busca la categoria en el modelo y se elimina
         Producto::find($id_producto)->delete();
-        return redirect()->route('productos.index');
+        return redirect()->route('productos.index')->with('success','El producto se ha eliminado correctamente');
 
     }
 }

@@ -133,7 +133,7 @@
                                         @endforeach
                                     @else
                                     <tr class="text-gray-700 dark:text-gray-400">
-                                        <td colspan="3">
+                                        <td colspan="6">
                                             <div class="flex justify-center text-sm">
                                                 <div>
                                                     <p class="font-semibold">No hay clientes</p>

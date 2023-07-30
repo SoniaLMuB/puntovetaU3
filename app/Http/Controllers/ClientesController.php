@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ClientesController extends Controller
 {
@@ -48,7 +49,7 @@ class ClientesController extends Controller
             'imagen' => $request->imagen
         ]);
         //Se retorna a la vista de clientes
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('success','El cliente se ha creado correctamente');
     }
 
     //Ruta para retornar la vista de editar cliente
@@ -82,7 +83,7 @@ class ClientesController extends Controller
             'imagen' => $request->imagen
         ]);
         //Se retorna a la vista de clientees
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('success','El cliente se ha actualizado correctamente');
     }
 
     //Funcion para eliminar el cliente
@@ -90,6 +91,6 @@ class ClientesController extends Controller
     {
         //Se busca el cliente en el modelo y se elimina
         Cliente::find($id_cliente)->delete();
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('success','El cliente se ha eliminado correctamente');
     }
 }

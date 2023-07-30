@@ -21,6 +21,8 @@
 
   <body class="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500">
     @yield('contenido')
+    @include('sweetalert::alert')
+
   </body>
   <!-- plugin for scrollbar  -->
   <script src="{{asset('js/argon-dashboard-tailwind.js')}}"></script>

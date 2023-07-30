@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoriasController extends Controller
 {
@@ -43,7 +44,7 @@ class CategoriasController extends Controller
             'creado_por'=>auth()->user()->username
         ]);
 
-        return redirect()->route('categorias.index');
+        return redirect()->route('categorias.index')->with('success','La categoría se ha creado correctamente');
     }
 
     //Ruta para retornar a la vista de editar categoria
@@ -68,7 +69,7 @@ class CategoriasController extends Controller
             'imagen'=>$request->imagen,
             'creado_por'=>auth()->user()->username
         ]);
-        return redirect()->route('categorias.index');
+        return redirect()->route('categorias.index')->with('success','La categoría se ha actualizado correctamente');
 
     }
 
@@ -76,7 +77,7 @@ class CategoriasController extends Controller
     public function delete($id_categoria){
         //Se busca la categoria en el modelo y se elimina
         Categoria::find($id_categoria)->delete();
-        return redirect()->route('categorias.index');
+        return redirect()->route('categorias.index')->with('success','La categoría se ha eliminado correctamente');
 
     }
 }

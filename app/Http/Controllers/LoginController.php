@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -21,7 +22,7 @@ class LoginController extends Controller
         // Condicion para saber si el user se pudo autenticar
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
             // back() para volver a la pagina anterior, en este caso, con un mensaje
-            return back()->with('mensaje', 'Credenciales Incorrectas');
+            return back()->with('errors', 'Credenciales Incorrectas');
         }
 
         // Redirecciona
