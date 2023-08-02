@@ -21,4 +21,9 @@ class VentasController extends Controller
     public function mostrar(){
         return view('ventas.devolucionesVentas');
     }
+
+    //Funcion para redirigir a la vista de crear venta
+    public function create(){
+        return view('ventas.addVenta');
+    }
 }

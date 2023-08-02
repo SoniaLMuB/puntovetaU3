@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\RecibosController;
 use Illuminate\Support\Facades\Route;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\PostController;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\RecibosController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CotizacionesController;
 use App\Http\Controllers\subCategoriaController;
 
 /*
@@ -105,6 +106,8 @@ Route::get('/ventas', [VentasController::class,'index'])->name('ventas.index');
 Route::get('/ventasDetalles',[VentasController::class,'show'])->name('ventas.show');
 //Ruta para retornar la vista de devoluciones
 Route::get('/ventasDevolucion',[VentasController::class,'mostrar'])->name('ventas.devoluciones');
+//Ruta para la vista de añadir venta
+Route::get('/ventas/create',[VentasController::class,'create'])->name('ventas.create');
 
 //Ruta para retonar la vista de proveedores
 Route::get('/suppliers',[SupplierController::class,'index'])->name('supplier.index');
@@ -136,6 +139,10 @@ Route::get('/clientes/delete/{id_cliente}',[ClientesController::class,'delete'])
 //Ruta para la vista de recibos
 Route::get('/recibos',[RecibosController::class,'index'])->name('recibos.index');
 
+//Ruta para la vista de cotizaciones
+Route::get('/cotizaciones',[CotizacionesController::class,'index'])->name('cotizaciones.index');
+//Ruta para la vista de agregar cotizacion
+Route::get('/cotizaciones/addCotizacion',[CotizacionesController::class,'create'])->name('cotizaciones.create');
 
 //Ruta para procesar la imagenes en el controlador
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagen.store');

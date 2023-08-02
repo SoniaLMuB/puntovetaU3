@@ -342,7 +342,7 @@
                     </li>
                     <li class="mt-0.5 w-full">
                         <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
+                            href="{{route('supplier.index')}}">
                             <div
                                 class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-diagram-2-fill relative top-0 text-sm leading-normal text-emerald-500" viewBox="0 0 16 16">
@@ -370,7 +370,7 @@
                     </li>
                     <li class="mt-0.5 w-full">
                         <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
+                            href="{{route('ventas.index')}}">
                             <div
                                 class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-piggy-bank-fill relative top-0 text-sm leading-normal text-orange-500 " viewBox="0 0 16 16">
@@ -402,7 +402,7 @@
                     </li>
                     <li class="mt-0.5 w-full">
                         <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
+                            href="{{route('cotizaciones.index')}}">
                             <div
                                 class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-credit-card-2-back-fill relative top-0 text-sm text-green-500 " viewBox="0 0 16 16">

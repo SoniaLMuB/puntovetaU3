@@ -23,7 +23,7 @@
                                 <h4 class="mb-0 dark:text-white">Listado de Ventas</h4>
                             </div>
                             <div class="flex-none w-1/2 max-w-full px-3 text-right">
-                                <a href="#"
+                                <a href="{{route('ventas.create')}}"
                                     class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
                                     href="javascript:;"> <i class="fas fa-plus" aria-hidden="true"> </i>&nbsp;&nbsp;Añadir
                                     Venta</a>
