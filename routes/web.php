@@ -14,6 +14,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\CotizacionesController;
 use App\Http\Controllers\subCategoriaController;
 
@@ -143,6 +144,12 @@ Route::get('/recibos',[RecibosController::class,'index'])->name('recibos.index')
 Route::get('/cotizaciones',[CotizacionesController::class,'index'])->name('cotizaciones.index');
 //Ruta para la vista de agregar cotizacion
 Route::get('/cotizaciones/addCotizacion',[CotizacionesController::class,'create'])->name('cotizaciones.create');
+
+//Ruta para retornar la vista de  listdo de ventas
+Route::get('/compras', [ComprasController::class,'index'])->name('compras.index');
+//Ruta para la vista de añadir venta
+Route::get('/compras/create',[ComprasController::class,'create'])->name('compras.create');
+
 
 //Ruta para procesar la imagenes en el controlador
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagen.store');

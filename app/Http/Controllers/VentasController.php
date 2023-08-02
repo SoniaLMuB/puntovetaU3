@@ -12,7 +12,7 @@ class VentasController extends Controller
         return view('ventas.listadoVentas');
     }
 
-    //Función que dirigirá a la vista del listado de ventas
+    //Función que dirigirá a la vista dertalle de ventas
     public function show(){
         return view('ventas.detallesVentas');
     }
