@@ -4,6 +4,9 @@ import Dropzone from 'dropzone';
 import { Select, initTE } from "tw-elements";
 initTE({ Select });
 
+import { Modal, initTE } from "tw-elements";
+initTE({ Modal });
+
 Dropzone.autoDiscover = false;
 // Configuración del dropzone
 const dropzone = new Dropzone('#dropzone', {

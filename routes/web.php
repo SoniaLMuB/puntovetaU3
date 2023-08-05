@@ -4,17 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\RecibosController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
-use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\CotizacionesController;
 use App\Http\Controllers\subCategoriaController;
 
@@ -149,6 +150,19 @@ Route::get('/cotizaciones/addCotizacion',[CotizacionesController::class,'create'
 Route::get('/compras', [ComprasController::class,'index'])->name('compras.index');
 //Ruta para la vista de añadir venta
 Route::get('/compras/create',[ComprasController::class,'create'])->name('compras.create');
+
+//Ruta para la vista de usuarios
+Route::get('/users',[UsersController::class,'index'])->name('users.index');
+//Ruta para el formulario de registro de usuarios
+Route::get('/users/create',[UsersController::class,'create'])->name('users.create');
+//Ruta para almacenar los usuarios a la base de datos
+Route::post('/users/create',[UsersController::class,'store'])->name('users.store');
+//Ruta para ir a la vista de actualizar usuario
+Route::get('/users/update/{id_usuario}',[UsersController::class,'show'])->name('users.show');
+//Ruta para actualizar al usuario
+Route::post('/users/update',[UsersController::class,'update'])->name('users.update');
+//Ruta para eliminar el usuario
+Route::get('/users/delete/{id_usuario}',[UsersController::class,'delete'])->name('users.delete');
 
 
 //Ruta para procesar la imagenes en el controlador
