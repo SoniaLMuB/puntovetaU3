@@ -40,15 +40,19 @@
                                             <div class="flex flex-wrap -mx-3">
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
                                                     <div class="mb-4">
-                                                        <label for="nombre"
+                                                        <label for="proveedor"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
-                                                            Nombre de cliente
+                                                            Nombre de proveedor
                                                         </label>
                                                         <div class="relative">
                                                             <select
                                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
-                                                                name="cliente" id="cliente">
+                                                                name="proveedor" id="proveedor">
                                                                 <option value="">Seleccione</option>
+                                                                @foreach ($proveedores as $proveedor)
+                                                                    <option value="{{ $proveedor->id }}">
+                                                                        {{ $proveedor->nombre }}</option>
+                                                                @endforeach
                                                             </select>
                                                             <div
                                                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -60,7 +64,7 @@
                                                                 </svg>
                                                             </div>
                                                         </div>
-                                                        @error('cliente')
+                                                        @error('proveedor')
                                                             <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
@@ -108,8 +112,12 @@
                                                         <div class="relative">
                                                             <select
                                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
-                                                                name="producto" id="producto">
+                                                                name="producto" id="productos">
                                                                 <option value="">Seleccione</option>
+                                                                @foreach ($productos as $producto)
+                                                                    <option value="{{ $producto->id }}">
+                                                                        {{ $producto->nombre }}</option>
+                                                                @endforeach
                                                             </select>
                                                             <div
                                                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -128,10 +136,10 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                
-                                                <div class="flex-auto px-0 pt-0 pb-2">
+
+                                                <div class="flex-auto px-0 pt-0 pb-2 w-full">
                                                     <div class="p-0 overflow-x-auto">
-                                                        <table id="table1"
+                                                        <table id="tablaProductos"
                                                             class="table table-striped items-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
                                                             <thead class="align-bottom">
                                                                 <tr>
@@ -174,160 +182,124 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td
-                                                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        MAC
-                                                                    </td>
-                                                                    <td
-                                                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        Sonia
-                                                                    </td>
-                                                                    <td
-                                                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        Sonia
-                                                                    </td>
-                                                                    <td
-                                                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        Sonia
-                                                                    </td>
-                                                                    <td
-                                                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        SL0101
-                                                                    </td>
-                                                                    <td class="p-2 d-flex justify-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
-                                                                        style="display: flex; justify-content:center;">
-                                                                        TEST
-                                                                    </td>
-                                                                    
-                                                                    <td
-                                                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        0
-                                                                    </td>
-                                                                    <td
-                                                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        0
-                                                                    </td>
-                                                                    <td
-                                                                        class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                        <a href="#">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="16" height="16"
-                                                                                fill="currentColor"
-                                                                                class="bi bi-trash3-fill"
-                                                                                viewBox="0 0 16 16">
-                                                                                <path
-                                                                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                                                                            </svg>
-                                                                        </a>
-                                                                    </td>
-                                                                </tr>
+
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="w-full">
                                                     <div class="flex">
-                                                        
+
                                                         <div class="flex-1 px-3">
                                                             <p>Tax</p>
-                                                        
+
                                                             <p>Descuento</p>
-                                                        
+
                                                             <p>Envío</p>
-                                                            
+
                                                             <p>Gran Total</p>
                                                         </div>
                                                         <div class="flex-1 px-3">
-                                                        
                                                             <p> $ 0.00</p>
                                                             <p> $ 0.00</p>
                                                             <p> $ 0.00</p>
                                                             <p> $ 0.00</p>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
 
                                                 <div class="flex flex-wrap w-full">
                                                     <div class="mb-4 w-1/4  md:w-1/3 px-3">
-                                                        <label for="nombre" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                        <label for="nombre"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Impuesto de pedido
                                                         </label>
                                                         <div class="relative">
-                                                            <input type="text" name="impuestoPedido" value="{{ old('impuestoPedido') }}"
-                                                            placeholder="Ingrese el impuesto"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                            <input type="text" name="impuestoPedido"
+                                                                value="{{ old('impuestoPedido') }}"
+                                                                placeholder="Ingrese el impuesto"
+                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         </div>
                                                         @error('impuestoPedido')
-                                                        <p class="text-red-500 my-2 text-sm text-center">
-                                                            {{ $message }}
-                                                        </p>
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4 w-1/4  md:w-1/3 px-3">
-                                                        <label for="fecha" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                        <label for="fecha"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Descuento
                                                         </label>
                                                         <div class="relative">
-                                                            <input type="text" name="descuentoPedido" value="{{ old('descuentoPedido') }}"
-                                                            placeholder="Ingrese el descuento"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                            <input type="text" name="descuentoPedido"
+                                                                value="{{ old('descuentoPedido') }}"
+                                                                placeholder="Ingrese el descuento"
+                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         </div>
                                                         @error('descuentoPedido')
-                                                        <p class="text-red-500 my-2 text-sm text-center">
-                                                            {{ $message }}
-                                                        </p>
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4 w-1/4 md:w-1/3 px-3">
-                                                        <label for="referencia" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Envío</label>
-                                                        <input type="number" name="envio" value="{{ old('envio') }}" placeholder="Ingrese la cantidad del envío"
+                                                        <label for="referencia"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Envío</label>
+                                                        <input type="number" name="envio" value="{{ old('envio') }}"
+                                                            placeholder="Ingrese la cantidad del envío"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('envio')
-                                                        <p class="text-red-500 my-2 text-sm text-center">
-                                                            {{ $message }}
-                                                        </p>
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
                                                         @enderror
                                                     </div>
                                                     <div class="mb-4 w-1/4  md:w-1/3 px-3">
-                                                        <label for="referencia" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                        <label for="referencia"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Status
                                                         </label>
                                                         <div class="relative">
-                                                            <select class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                                                            <select
+                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
                                                                 name="status" id="status">
                                                                 <option value="">Seleccione</option>
                                                             </select>
-                                                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                                    <path d="M6 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
+                                                            <div
+                                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                                <svg class="fill-current h-4 w-4"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 20 20">
+                                                                    <path d="M6 8l4 4 4-4" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round" />
                                                                 </svg>
                                                             </div>
                                                         </div>
                                                         @error('status')
-                                                        <p class="text-red-500 my-2 text-sm text-center">
-                                                            {{ $message }}
-                                                        </p>
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="mb-4 w-full">
                                                     <label for="nombre"
                                                         class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                         Descripción
                                                     </label>
                                                     <div class="relative">
-                                                        <textarea name="descripcion" id="" 
+                                                        <textarea name="descripcion" id=""
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 
                                                                 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white 
                                                                 bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all
                                                                 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
                                                             
                                                         </textarea>
-                                                        
+
                                                     </div>
                                                     @error('descripcion')
                                                         <p class="text-red-500 my-2 text-sm text-center">
@@ -341,18 +313,17 @@
 
                                             </div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                                                <div class="flex justify-end flex-wrap -mx-3">
-                                                    <div class="flex-none w-2/2 max-w-full text-right">
-                                                        <button type="submit"
-                                                            class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
-                                                            href="javascript:;"> <i class="fas fa-plus"
-                                                                aria-hidden="true"> </i>&nbsp;&nbsp;Registrar compra
-                                                        </button>
-                                                    </div>
+                                            <div class="flex justify-end flex-wrap -mx-3">
+                                                <div class="flex-none w-2/2 max-w-full text-right">
+                                                    <button type="submit"
+                                                        class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
+                                                        href="javascript:;"> <i class="fas fa-plus" aria-hidden="true">
+                                                        </i>&nbsp;&nbsp;Registrar compra
+                                                    </button>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -361,4 +332,67 @@
             </div>
         </div>
     </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            //console.log(urlGetProducto);
+            $('#productos').change(function() {
+                var id = $(this).val();
+                var urlProducto = "{{ route('compras.getProducto', ['id_producto' => 'ID_PRODUCTO']) }}"
+                    .replace('ID_PRODUCTO', id);
+                if (id) {
+                    $.ajax({
+                        url: urlProducto,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data);
+                            var fila = `
+            <tr>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent.">
+                    <div class="flex px-2 py-1">
+                        <div>
+                            <img src="{{ asset('uploads') }}/${data.imagen}"  class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-in-out h-9 w-9 rounded-xl" alt="${data.nombre}" />
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <h6 class="mb-0 text-sm leading-normal dark:text-white">${data.nombre}</h6>
+                        </div>
+                    </div>
+                </td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${data.stock}</td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${data.precio_compra}</td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${0}</td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${0}</td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${data.impuesto_truncado}</td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${data.costo_total}</td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${data.precio_venta}</td>
+                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"">
+                    <a href="#">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="16" height="16"
+                                                                                fill="currentColor"
+                                                                                class="bi bi-trash3-fill"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path
+                                                                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                                                            </svg>
+                                                                        </a>
+                </td>
+            </tr>
+        `;
+
+                            $('#tablaProductos tbody').append(fila);
+                        },
+                        error: function(error) {
+                            console.log(error);
+                            alert('Hubo un error al obtener los detalles del producto.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

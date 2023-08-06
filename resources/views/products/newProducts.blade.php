@@ -109,6 +109,34 @@
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
+                                                        <label for="subcategoria"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Subcategoria</label>
+
+                                                        <div class="relative">
+                                                            <select
+                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                                                                name="subcategoria" id="subcategoria">
+                                                                <option value="">Seleccione</option>
+                                                            </select>
+                                                            <div
+                                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                                <svg class="fill-current h-4 w-4"
+                                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                    <path d="M6 8l4 4 4-4" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        @error('subcategoria')
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                                    <div class="mb-4">
                                                         <label for="marca"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Marca</label>
 
@@ -143,16 +171,15 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex flex-wrap -mx-3">
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="precio_venta"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Precio
                                                             venta</label>
 
                                                         <input type="number" name="precio_venta"
-                                                            value="{{ old('precio_venta') }}" placeholder="Ingrese precio"
+                                                            value="{{ old('precio_venta') }}"
+                                                            placeholder="Ingrese precio"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('precio_venta')
                                                             <p class="text-red-500 my-2 text-sm text-center">
@@ -161,7 +188,10 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                            </div>
+                                            <div class="flex flex-wrap -mx-3">
+
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="precio_compra"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Precio
@@ -178,7 +208,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="stock"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Stock</label>
@@ -234,4 +264,39 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            //console.log(urlGetProducto);
+            $('#categoria').change(function() {
+                var id = $(this).val();
+                var urlCategoria =
+                    "{{ route('subCategorias.getSubcategories', ['id_categoria' => 'ID_CATEGORIA']) }}"
+                    .replace('ID_CATEGORIA', id);
+                if (id) {
+                    $.ajax({
+                        url: urlCategoria,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data);
+                            $('#subcategoria').empty().append(
+                                '<option value="">Seleccione</option>');
+                            $.each(data, function(index, subcategoria) {
+                                $('#subcategoria').append('<option value="' +
+                                    subcategoria.id + '">' + subcategoria.nombre +
+                                    '</option>');
+                            });
+                        },
+                        error: function(error) {
+                            console.log(error);
+                            alert('Hubo un error al obtener los detalles del producto.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

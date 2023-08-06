@@ -4,9 +4,6 @@ import Dropzone from 'dropzone';
 import { Select, initTE } from "tw-elements";
 initTE({ Select });
 
-import { Modal, initTE } from "tw-elements";
-initTE({ Modal });
-
 Dropzone.autoDiscover = false;
 // Configuración del dropzone
 const dropzone = new Dropzone('#dropzone', {
@@ -42,3 +39,4 @@ dropzone.on('removedfile', function () {
     // Para resetear el valor cuando se elimine la imagen
     document.querySelector('[name="imagen"]').value = '';
 });
+

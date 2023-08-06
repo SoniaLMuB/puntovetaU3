@@ -44,6 +44,7 @@ class ProductosController extends Controller
             'precio_compra'=>'required',
             'stock'=>'required',
             'categoria'=>'required',
+            'subcategoria'=>'required',
             'marca'=>'required',
             'imagen'=>'required'
         ]);
@@ -55,6 +56,7 @@ class ProductosController extends Controller
             'creado_por'=>auth()->user()->username,
             'categoria_id'=>$request->categoria,
             'marca_id'=>$request->marca,
+            'subcategoria_id'=>$request->subcategoria,
             'stock'=>$request->stock,
             'precio_venta'=>$request->precio_venta,
             'precio_compra'=>$request->precio_compra,
@@ -114,4 +116,5 @@ class ProductosController extends Controller
         return redirect()->route('productos.index')->with('success','El producto se ha eliminado correctamente');
 
     }
+
 }

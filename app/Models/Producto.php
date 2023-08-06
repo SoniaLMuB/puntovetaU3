@@ -16,6 +16,7 @@ class Producto extends Model
         'stock',
         'marca_id',
         'categoria_id',
+        'subcategoria_id',
         'creado_por',
         'imagen'
     ];
@@ -26,5 +27,9 @@ class Producto extends Model
     }
     public function categoria(){
         return $this->belongsTo(Categoria::class,'categoria_id');
+    }
+
+    public function subcategoria(){
+        return $this->belongsTo(Subcategoria::class);
     }
 }

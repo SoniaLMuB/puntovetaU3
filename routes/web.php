@@ -100,6 +100,8 @@ Route::get('/editSubCategory/{id_subCategory}', [subCategoriaController::class, 
 Route::post('/updateSubCategory', [subCategoriaController::class, 'update'])->name('subCategorias.update');
 //Ruta para eliminar la subcategoria de la base de datos
 Route::get('/deleteSubCategory/{id_subCategory}', [subCategoriaController::class, 'delete'])->name('subCategorias.delete');
+//Ruta para obtener las subcategorias de las categorias padres
+Route::get('/subcategorias/getSubcategory/{id_categoria}', [subCategoriaController::class, 'getSubcategories'])->name('subCategorias.getSubcategories');
 
 
 //Ruta para retornar la vista de  listdo de ventas
@@ -150,6 +152,9 @@ Route::get('/cotizaciones/addCotizacion',[CotizacionesController::class,'create'
 Route::get('/compras', [ComprasController::class,'index'])->name('compras.index');
 //Ruta para la vista de añadir venta
 Route::get('/compras/create',[ComprasController::class,'create'])->name('compras.create');
+//Ruta para obtener el producto en la tabla
+Route::get('/compras/getProducto/{id_producto}',[ComprasController::class,'getProduct'])->name('compras.getProducto');
+
 
 //Ruta para la vista de usuarios
 Route::get('/users',[UsersController::class,'index'])->name('users.index');

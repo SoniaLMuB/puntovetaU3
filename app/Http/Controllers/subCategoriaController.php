@@ -101,4 +101,10 @@ class subCategoriaController extends Controller
         return redirect()->route('subCategoria.index')->with('success','La Subcategoría se ha eliminado correctamente');
 
     }
+
+    //Funcion para obtener la subcategorias de las categorias padres
+    public function getSubcategories($id_categoria){
+        $subcategorias = Subcategoria::where('categoria_id', $id_categoria)->get();
+        return response()->json($subcategorias);
+    }
 }
