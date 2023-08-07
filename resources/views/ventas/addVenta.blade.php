@@ -103,7 +103,7 @@
                     </div>
                     <div class="flex-none w-1/2 max-w-full px-3 text-right">
                       <button type="button" id="clearAll" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-fuchsia-500 text-fuchsia-500 hover:opacity-75">
-                        Limpiar todo
+                        Eliminar productos
                       </button>
                     </div>
                   </div>
@@ -150,7 +150,7 @@
                       </div>
                     </div>
                     <div class="flex flex-col items-center justify-center">
-                      <p id="labelTotal" class="relative z-10 inline-block m-0 font-semibold leading-normal text-transparent bg-gradient-to-tl from-green-600 to-lime-400 text-sm bg-clip-text">MX$0.00</p>
+                      <p id="labelTotal" class="relative z-10 inline-block m-0 font-semibold leading-normal text-transparent bg-gradient-to-tl from-blue-500 to-violet-500 text-sm bg-clip-text">MX$0.00</p>
                       <input name="total" id="total" type="hidden" value="0">
                     </div>
                   </li>
@@ -159,7 +159,7 @@
   
               <div class="text-center">
                 <button type="submit" class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25">
-                  Comprar
+                  Reaizar Comprar
                 </button>
               </div>
             </form>
