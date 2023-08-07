@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -24,7 +25,8 @@ class ClientesController extends Controller
 
     //Funcion para retornar la vista de agregar clientes
     public function create(){
-        return view('clientes.newCliente');
+        $paises = Country::all();
+        return view('clientes.newCliente',["paises"=>$paises]);
     }
 
     //Funcion para registrar los clientes en la tabla
@@ -37,6 +39,8 @@ class ClientesController extends Controller
             'empresa' => 'required',
             'email' => 'required|email|min:3|max:20',
             'telefono' => 'required|min:10|max:10',
+            'pais' => 'required',
+            'ciudad' => 'required',
             'imagen' => 'required'
         ]);
         //Se hace el registro en la tabla de clientes
@@ -46,7 +50,9 @@ class ClientesController extends Controller
             'empresa' => $request->empresa,
             'email' => $request->email,
             'telefono' => $request->telefono,
-            'imagen' => $request->imagen
+            'pais_id' => $request->pais,
+            'imagen' => $request->imagen,
+            'ciudad' => $request->ciudad,
         ]);
         //Se retorna a la vista de clientes
         return redirect()->route('clientes.index')->with('success','El cliente se ha creado correctamente');
@@ -57,8 +63,9 @@ class ClientesController extends Controller
         //Se busca el cliente mediante el ID
         $cliente= Cliente::where('id',$id_cliente)->get();
         //dd($cliente);
+        $paises = Country::all();
         //Se retorna a la vista
-        return view('clientes.editcliente',["cliente"=>$cliente]);
+        return view('clientes.editcliente',["cliente"=>$cliente,"paises"=>$paises]);
     }
 
     //Función para actualizar los datos del cliente en la base de datos
@@ -71,6 +78,8 @@ class ClientesController extends Controller
             'empresa' => 'required',
             'email' => 'required|email|min:3|max:20',
             'telefono' => 'required|min:10|max:10',
+            'pais' => 'required',
+            'ciudad' => 'required',
             'imagen' => 'required'
         ]);
         //Actualizacion de datos
@@ -80,7 +89,9 @@ class ClientesController extends Controller
             'empresa' => $request->empresa,
             'email' => $request->email,
             'telefono' => $request->telefono,
-            'imagen' => $request->imagen
+            'pais_id' => $request->pais,
+            'imagen' => $request->imagen,
+            'ciudad' => $request->ciudad,
         ]);
         //Se retorna a la vista de clientees
         return redirect()->route('clientes.index')->with('success','El cliente se ha actualizado correctamente');

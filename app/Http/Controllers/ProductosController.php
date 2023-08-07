@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
 use App\Models\Marca;
+use App\Models\Country;
 use App\Models\Producto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -48,7 +49,6 @@ class ProductosController extends Controller
             'marca'=>'required',
             'imagen'=>'required'
         ]);
-       
         //Se hace el registro a la base de datos
         Producto::create([
             'nombre'=>$request->nombre,

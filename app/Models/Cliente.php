@@ -15,6 +15,13 @@ class Cliente extends Model
         'empresa',
         'email',
         'telefono',
-        'imagen'
+        'imagen',
+        'pais_id',
+        'ciudad'
     ];
+
+    public function pais()
+    {
+        return $this->belongsTo(Country::class, 'pais_id');
+    }
 }

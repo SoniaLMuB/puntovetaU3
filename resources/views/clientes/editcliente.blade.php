@@ -127,6 +127,51 @@
                                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         </div>
                                                     </div>
+                                                    <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                        <div class="mb-4">
+                                                            <label for="email"
+                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                                País
+                                                            </label>
+                                                            @error('pais')
+                                                                <p
+                                                                    class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
+                                                            <select value="{{ $clienteInfo->pais->id }}"
+                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                                                                name="pais" id="pais">
+                                                                <option value="">Seleccione</option>
+                                                                @if (count($paises) > 0)
+                                                                    @foreach ($paises as $pais)
+                                                                        <option value="{{ $pais->id }}"
+                                                                            {{ $pais->id == $clienteInfo->pais_id ? 'selected' : '' }}>
+                                                                            {{ $pais->nombre }}</option>
+                                                                    @endforeach
+                                                                @else
+                                                                    <option value="">No hay categorias</option>
+                                                                @endif
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                        <div class="mb-4">
+                                                            <label for="ciudad"
+                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                                Ciudad
+                                                            </label>
+                                                            @error('ciudad')
+                                                                <p
+                                                                    class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                                    {{ $message }}
+                                                                </p>
+                                                            @enderror
+                                                            <input type="text" name="ciudad" value="{{$clienteInfo->ciudad}}"
+                                                                placeholder="Ingrese el nombre de la ciudad"
+                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        </div>
+                                                    </div>
                                                     @error('imagen')
                                                         <p
                                                             class=" text-red-500 my-2 rounded-lg text-sm p-2 text-center">
