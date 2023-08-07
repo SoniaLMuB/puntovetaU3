@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -24,6 +25,7 @@ class VentasController extends Controller
 
     //Funcion para redirigir a la vista de crear venta
     public function create(){
-        return view('ventas.addVenta');
+        $categories=Categoria::all();
+        return view('ventas.addVenta',['categorias'=>$categories]);
     }
 }
