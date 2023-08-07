@@ -152,6 +152,12 @@ Route::get('/cotizaciones/addCotizacion',[CotizacionesController::class,'create'
 Route::get('/compras', [ComprasController::class,'index'])->name('compras.index');
 //Ruta para la vista de añadir venta
 Route::get('/compras/create',[ComprasController::class,'create'])->name('compras.create');
+//Ruta para almacenar las compras en la base de datos
+Route::post('/compras/create',[ComprasController::class,'store']);
+//Ruta para redirigir a la vista de editar compra
+Route::get('/compras/show/{id_compra}',[ComprasController::class,'show'])->name('compras.show');
+//Ruta para eliminar la compra de la base de datos
+Route::get('/compras/delete/{id_compra}',[ComprasController::class,'delete'])->name('compras.delete');
 //Ruta para obtener el producto en la tabla
 Route::get('/compras/getProducto/{id_producto}',[ComprasController::class,'getProduct'])->name('compras.getProducto');
 

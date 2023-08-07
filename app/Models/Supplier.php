@@ -16,4 +16,8 @@ class Supplier extends Model
         'imagen',
         'email'
     ];
+
+    public function compras(){
+        return $this->hasMany(Compra::class);
+    }
 }

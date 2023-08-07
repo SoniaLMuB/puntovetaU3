@@ -44,6 +44,7 @@
                                             Información de compra</p>
                                         <form action="{{ route('compras.create') }}" method="POST" novalidate>
                                             @csrf
+
                                             <div class="flex flex-wrap -mx-3">
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
                                                     <div class="mb-4">
@@ -51,26 +52,10 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Nombre de proveedor
                                                         </label>
-                                                        <div class="relative">
-                                                            <select
-                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
-                                                                name="proveedor" id="proveedor">
-                                                                <option value="">Seleccione</option>
-                                                                @foreach ($proveedores as $proveedor)
-                                                                    <option value="{{ $proveedor->id }}">
-                                                                        {{ $proveedor->nombre }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <div
-                                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                                                <svg class="fill-current h-4 w-4"
-                                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                                    <path d="M6 8l4 4 4-4" fill="none"
-                                                                        stroke="currentColor" stroke-width="2"
-                                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                                </svg>
-                                                            </div>
-                                                        </div>
+                                                        <input readonly type="text" name="proveedor"
+                                                            value="{{ $compra->supplier->nombre }}"
+                                                            placeholder="Ingrese código del producto"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('proveedor')
                                                             <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
@@ -85,7 +70,8 @@
                                                             Fecha de compra
                                                         </label>
 
-                                                        <input type="date" name="fecha" value="{{ old('fecha') }}"
+                                                        <input readonly type="date" name="fecha"
+                                                            value="{{ $compra->fecha }}"
                                                             placeholder="Ingrese código del producto"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('fecha')
@@ -100,8 +86,8 @@
                                                         <label for="referencia"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Numero
                                                             de referencia</label>
-                                                        <input type="text" name="referencia"
-                                                            value="{{ old('referencia') }}"
+                                                        <input readonly type="text" name="referencia"
+                                                            value="{{ $compra->referencia }}"
                                                             placeholder="Ingrese código del producto"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('referencia')
@@ -109,66 +95,6 @@
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                                                    <div class="mb-4">
-                                                        <label for="marca"
-                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Producto</label>
-
-                                                        <div class="relative">
-                                                            <select
-                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
-                                                                name="producto" id="productos">
-                                                                <option value="">Seleccione</option>
-                                                                @foreach ($productos as $producto)
-                                                                    <option value="{{ $producto->id }}">
-                                                                        {{ $producto->nombre }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <div
-                                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                                                <svg class="fill-current h-4 w-4"
-                                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                                    <path d="M6 8l4 4 4-4" fill="none"
-                                                                        stroke="currentColor" stroke-width="2"
-                                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                        @error('producto')
-                                                            <p class="text-red-500 my-2 text-sm text-center">
-                                                                {{ $message }}
-                                                            </p>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                                                    <div class="mb-4">
-                                                        <label for="stock"
-                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Stock
-                                                            a añadir</label>
-                                                        <input type="number" name="stock" value="{{ old('stock') }}"
-                                                            placeholder="Ingrese stock a añadir"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
-                                                        @error('stock')
-                                                            <p class="text-red-500 my-2 text-sm text-center">
-                                                                {{ $message }}
-                                                            </p>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0"
-                                                    style="display: flex;
-                                                justify-content: center;
-                                                align-items: center;">
-                                                    <div class="mb-4">
-                                                        <button id="add_stock" type="button"
-                                                            class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
-                                                            href="javascript:;"> <i class="fas fa-plus" aria-hidden="true">
-                                                            </i>&nbsp;&nbsp;Añadir
-                                                            producto
-                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div class="flex-auto px-0 pt-0 pb-2 w-full">
@@ -205,13 +131,56 @@
                                                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                                                         Costo Total
                                                                     </th>
-                                                                    <th
-                                                                        class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                                                        Acción
-                                                                    </th>
+
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach ($detalle_compra as $dato)                                                                           
+                                                                    
+                                                                    <tr id="producto_${productoSeleccionado.id}">
+                                                                        <td
+                                                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent.">
+                                                                            <div class="flex px-2 py-1">
+                                                                                <div>
+                                                                                    <img src="{{ asset('uploads') . '/' . $dato->producto->imagen}}"
+                                                                                        class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-in-out h-9 w-9 rounded-xl"
+                                                                                        alt="${productoSeleccionado.nombre}" />
+                                                                                </div>
+                                                                                <div class="flex flex-col justify-center">
+                                                                                    <h6
+                                                                                        class="mb-0 text-sm leading-normal dark:text-white">
+                                                                                        {{$dato->producto->nombre}}
+                                                                                    </h6>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td
+                                                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                                            {{$dato->producto->stock}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent stock-nuevo">
+                                                                            {{$dato->stock}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                                            {{$dato->precio_compra}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                                            {{round(($dato->precio_compra*$dato->stock)*0.15)}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                                            {{$dato->producto->precio_venta}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent costo-total">
+                                                                            {{$compra->total}}
+                                                                        </td>
+
+                                                                    </tr>
+                                                                @endforeach
 
                                                             </tbody>
                                                         </table>
@@ -224,7 +193,7 @@
                                                             <p>Gran Total</p>
                                                         </div>
                                                         <div class="flex-1 px-3">
-                                                            <p id="sumaCostoTotal"> $ 0.00</p>
+                                                            <p id="sumaCostoTotal"> $ {{ $compra->total }}</p>
                                                         </div>
 
                                                     </div>
@@ -232,68 +201,68 @@
                                                 <input type="hidden" name="costo_total" id="inputCostoTotal"
                                                     value="0">
                                                 <!--
-                                                    <div class="flex flex-wrap w-full">
-                                                        <div class="mb-4 w-1/4  md:w-1/3 px-3">
-                                                            <label for="nombre"
-                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
-                                                                Impuesto de pedido
-                                                            </label>
-                                                            <div class="relative">
-                                                                <input type="text" name="impuestoPedido"
-                                                                    value="{{ old('impuestoPedido') }}"
-                                                                    placeholder="Ingrese el impuesto"
-                                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        <div class="flex flex-wrap w-full">
+                                                            <div class="mb-4 w-1/4  md:w-1/3 px-3">
+                                                                <label for="nombre"
+                                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                                    Impuesto de pedido
+                                                                </label>
+                                                                <div class="relative">
+                                                                    <input type="text" name="impuestoPedido"
+                                                                        value="{{ old('impuestoPedido') }}"
+                                                                        placeholder="Ingrese el impuesto"
+                                                                        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                                </div>
+                                                                @error('impuestoPedido')
+        <p class="text-red-500 my-2 text-sm text-center">
+                                                                                {{ $message }}
+                                                                            </p>
+    @enderror
                                                             </div>
-                                                            @error('impuestoPedido')
+                                                            <div class="mb-4 w-1/4  md:w-1/3 px-3">
+                                                                <label for="fecha"
+                                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                                    Descuento
+                                                                </label>
+                                                                <div class="relative">
+                                                                    <input type="text" name="descuentoPedido"
+                                                                        value="{{ old('descuentoPedido') }}"
+                                                                        placeholder="Ingrese el descuento"
+                                                                        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                                </div>
+                                                                @error('descuentoPedido')
         <p class="text-red-500 my-2 text-sm text-center">
-                                                                        {{ $message }}
-                                                                    </p>
+                                                                                {{ $message }}
+                                                                            </p>
     @enderror
-                                                        </div>
-                                                        <div class="mb-4 w-1/4  md:w-1/3 px-3">
-                                                            <label for="fecha"
-                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
-                                                                Descuento
-                                                            </label>
-                                                            <div class="relative">
-                                                                <input type="text" name="descuentoPedido"
-                                                                    value="{{ old('descuentoPedido') }}"
-                                                                    placeholder="Ingrese el descuento"
-                                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                             </div>
-                                                            @error('descuentoPedido')
+                                                            <div class="mb-4 w-1/4 md:w-1/3 px-3">
+                                                                <label for="referencia"
+                                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Envío</label>
+                                                                <input type="number" name="envio" value="{{ old('envio') }}"
+                                                                    placeholder="Ingrese la cantidad del envío"
+                                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                                @error('envio')
         <p class="text-red-500 my-2 text-sm text-center">
-                                                                        {{ $message }}
-                                                                    </p>
+                                                                                {{ $message }}
+                                                                            </p>
     @enderror
+                                                            </div>
                                                         </div>
-                                                        <div class="mb-4 w-1/4 md:w-1/3 px-3">
-                                                            <label for="referencia"
-                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Envío</label>
-                                                            <input type="number" name="envio" value="{{ old('envio') }}"
-                                                                placeholder="Ingrese la cantidad del envío"
-                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
-                                                            @error('envio')
-        <p class="text-red-500 my-2 text-sm text-center">
-                                                                        {{ $message }}
-                                                                    </p>
-    @enderror
-                                                        </div>
-                                                    </div>
-                                                -->
+                                                    -->
                                                 <div class="mb-4 w-full">
                                                     <label for="nombre"
                                                         class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                         Descripción
                                                     </label>
                                                     <div class="relative">
-                                                        <textarea name="descripcion" id=""
+                                                        <textarea name="descripcion" readonly
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 
                                                                 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white 
                                                                 bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all
                                                                 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
-                                                            
-                                                        </textarea>
+                                                                {{ $compra->descripcion }}
+                                                            </textarea>
 
                                                     </div>
                                                     @error('descripcion')
@@ -304,15 +273,6 @@
                                                 </div>
                                             </div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                                            <div class="flex justify-end flex-wrap -mx-3">
-                                                <div class="flex-none w-2/2 max-w-full text-right">
-                                                    <button type="submit"
-                                                        class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
-                                                        href="javascript:;"> <i class="fas fa-plus" aria-hidden="true">
-                                                        </i>&nbsp;&nbsp;Registrar compra
-                                                    </button>
-                                                </div>
-                                            </div>
                                     </div>
                                     </form>
                                 </div>
@@ -395,11 +355,11 @@
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${productoSeleccionado.precio_venta}</td>
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent costo-total">${productoSeleccionado.precio_compra*stock}</td>
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"">
-                            <button type="button" class="btn-borrar">
+                            <a href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                 </svg>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 `;
@@ -436,23 +396,6 @@
                 $("#sumaCostoTotal").text("$" + sumaTotal);
                 $("#inputCostoTotal").val(sumaTotal);
             }
-            // Función para eliminar un producto de la tabla y sus inputs correspondientes
-            $(document).on('click', '.btn-borrar', function(e) {
-                e.preventDefault();
-
-                // Obtiene el ID del producto desde el atributo de la fila
-                var productoId = $(this).closest('tr').attr('id').replace('producto_', '');
-
-                // Elimina la fila de la tabla
-                $(this).closest('tr').remove();
-
-                // Elimina los inputs ocultos relacionados con este producto
-                $(`input[name='producto_ids[]'][value='${productoId}']`).remove();
-                $(`input[name='stocks_${productoId}']`).remove();
-
-                // Actualiza la suma total del costo después de borrar el producto
-                actualizarSumaTotalCosto();
-            });
         });
     </script>
 @endsection
