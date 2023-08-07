@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('detallecompras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('compra_id')->constrained();
-            $table->foreignId('producto_id')->constrained();
+            $table->foreignId('compra_id')->constrained()->onDelete('cascade');
+            $table->foreignId('producto_id')->constrained()->onDelete('cascade');
             $table->integer('stock');
             $table->integer('precio_compra')->nullable();
             $table->timestamps();

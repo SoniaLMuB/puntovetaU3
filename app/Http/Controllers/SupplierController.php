@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -24,7 +25,8 @@ class SupplierController extends Controller
 
     //Funcion para retornar la vista de agregar proveedores
     public function create(){
-        return view('suppliers.newSupplier');
+        $paises = Country::all();
+        return view('suppliers.newSupplier',["paises"=>$paises]);
     }
 
     //Funcion para agregar un proveedor a la base de datos
@@ -32,10 +34,12 @@ class SupplierController extends Controller
         // Se validan los formularios
         $this->validate($request,[
             'nombre'=>'required',
-            'codigo'=>'required',
+            'codigo'=>'required|unique:suppliers',
             'telefono'=>'required',
             'email'=>'required|email',
-            'imagen'=>'required'
+            'imagen'=>'required',
+            'ciudad'=>'required',
+            'pais'=>'required'
         ]);
         //Se añade el registro a la base de datos
         Supplier::create([
@@ -43,7 +47,9 @@ class SupplierController extends Controller
             'codigo'=>$request->codigo,
             'telefono'=>$request->telefono,
             'email'=>$request->email,
-            'imagen'=>$request->imagen
+            'imagen'=>$request->imagen,
+            'pais_id'=>$request->pais,
+            'ciudad'=>$request->ciudad
         ]);
 
         return redirect()->route('supplier.index')->with('success','El proveedor se ha creado correctamente');
@@ -53,9 +59,11 @@ class SupplierController extends Controller
     //Ruta para retornar la vista de editar proveedor
     public function edit($id_proveedor){
         //Se busca el proveedor mediante el ID
-        $proveedor= Supplier::find($id_proveedor)->get();
+        $proveedor= Supplier::with('pais')->find($id_proveedor);
+        $paises = Country::all();
+
         //Se retorna a la vista
-        return view('suppliers.editSupplier',["proveedor"=>$proveedor]);
+        return view('suppliers.editSupplier',["proveedor"=>$proveedor,"paises"=>$paises]);
     }
 
         //Función para actualizar los datos del proveedor en la base de datos

@@ -37,7 +37,7 @@ class ClientesController extends Controller
             'nombre' => 'required',
             'codigo' => 'required',
             'empresa' => 'required',
-            'email' => 'required|email|min:3|max:20',
+            'email' => 'required|email|min:3',
             'telefono' => 'required|min:10|max:10',
             'pais' => 'required',
             'ciudad' => 'required',

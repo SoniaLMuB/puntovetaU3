@@ -14,10 +14,17 @@ class Supplier extends Model
         'codigo',
         'telefono',
         'imagen',
-        'email'
+        'email',
+        'pais_id',
+        'ciudad'
     ];
 
     public function compras(){
         return $this->hasMany(Compra::class);
+    }
+
+    public function pais()
+    {
+        return $this->belongsTo(Country::class, 'pais_id');
     }
 }
