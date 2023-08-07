@@ -31,7 +31,7 @@ class CategoriasController extends Controller
         //Validaciones de formulario
         $this->validate($request,[
             'nombre'=>'required',
-            'codigo'=>'required',
+            'codigo'=>'required|unique:categorias',
             'descripcion'=>'required',
             'imagen'=>'required'
         ]);

@@ -147,7 +147,7 @@
                                                                     @foreach ($paises as $pais)
                                                                         <option value="{{ $pais->id }}"
                                                                             {{ $pais->id == $clienteInfo->pais_id ? 'selected' : '' }}>
-                                                                            {{ $pais->nombre }}</option>
+                                                                            {{ $pais->name }}</option>
                                                                     @endforeach
                                                                 @else
                                                                     <option value="">No hay categorias</option>

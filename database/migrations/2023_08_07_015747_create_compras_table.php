@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id')->constrained();
+            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
             $table->date('fecha');
             $table->string('referencia');
             $table->string('descripcion');

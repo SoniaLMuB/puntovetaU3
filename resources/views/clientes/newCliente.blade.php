@@ -143,7 +143,7 @@
                                                             <option value="">Seleccione</option>
                                                             @if ($paises && count($paises) > 0)
                                                                 @foreach ($paises as $pais)
-                                                                    <option value="{{ $pais->id }}">{{ $pais->nombre }}</option>
+                                                                    <option value="{{ $pais->id }}">{{ $pais->name }}</option>
                                                                 @endforeach
                                                             @else
                                                                 <option value="">No hay paises</option>

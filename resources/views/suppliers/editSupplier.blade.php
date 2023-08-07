@@ -38,10 +38,10 @@
                                     <div class="flex-auto p-6">
                                         <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">
                                             Información de proveedor</p>
-                                        @foreach ($proveedor as $data)
                                         <form action="{{ route('supplier.update') }}" method="POST" novalidate>
                                             @csrf
-                                            <input type="hidden" name="id" id="" value="{{$data->id}}">
+                                            <input type="hidden" name="id" id=""
+                                                value="{{ $proveedor->id }}">
                                             <div class="flex flex-wrap -mx-3">
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
@@ -49,7 +49,8 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
                                                             de proveedor</label>
 
-                                                        <input type="text" name="nombre" value="{{$data->nombre}}"
+                                                        <input type="text" name="nombre"
+                                                            value="{{ $proveedor->nombre }}"
                                                             placeholder="Ingrese nombre de proveedor"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('nombre')
@@ -64,7 +65,8 @@
                                                         <label for="codigo"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Código</label>
 
-                                                        <input type="text" name="codigo" value="{{$data->codigo}}"
+                                                        <input type="text" name="codigo"
+                                                            value="{{ $proveedor->codigo }}"
                                                             placeholder="Ingrese código de proveedor"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('codigo')
@@ -79,7 +81,8 @@
                                                         <label for="telefono"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Teléfono</label>
 
-                                                        <input type="text" name="telefono" value="{{$data->telefono}}"
+                                                        <input type="text" name="telefono"
+                                                            value="{{ $proveedor->telefono }}"
                                                             placeholder="Ingrese teléfono de proveedor"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('telefono')
@@ -94,7 +97,7 @@
                                                         <label for="email"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Email</label>
 
-                                                        <input type="email" name="email" value="{{$data->email}}"
+                                                        <input type="email" name="email" value="{{ $proveedor->email }}"
                                                             placeholder="Ingrese email de proveedor"
                                                             class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('email')
@@ -104,13 +107,57 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                    <div class="mb-4">
+                                                        <label for="email"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                            País
+                                                        </label>
+                                                        @error('pais')
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                        <select value="{{ $proveedor->pais->id }}"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                                                            name="pais" id="pais">
+                                                            <option value="">Seleccione</option>
+                                                            @if (count($paises) > 0)
+                                                                @foreach ($paises as $pais)
+                                                                    <option value="{{ $pais->id }}"
+                                                                        {{ $pais->id == $proveedor->pais_id ? 'selected' : '' }}>
+                                                                        {{ $pais->name }}</option>
+                                                                @endforeach
+                                                            @else
+                                                                <option value="">No hay categorias</option>
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                    <div class="mb-4">
+                                                        <label for="ciudad"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                            Ciudad
+                                                        </label>
+                                                        @error('ciudad')
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                        <input type="text" name="ciudad"
+                                                            value="{{ $proveedor->ciudad }}"
+                                                            placeholder="Ingrese el nombre de la ciudad"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                    </div>
+                                                </div>
                                             </div>
                                             @error('imagen')
                                                 <p class="text-red-500 my-2 rounded-lg text-sm text-center">
                                                     {{ $message }}
                                                 </p>
                                             @enderror
-                                            <input type="hidden" name="imagen" value="{{$data->imagen}}">
+                                            <input type="hidden" name="imagen" value="{{ $proveedor->imagen }}">
                                             <div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                                                 <div class="flex justify-end flex-wrap -mx-3">
@@ -136,8 +183,6 @@
                                             class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
                                             @csrf
                                         </form>
-                                        @endforeach    
-
                                     </div>
                                 </div>
                             </div>
