@@ -125,9 +125,14 @@
                                                     class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                     {{ $producto->categoria->nombre }}
                                                 </td>
-                                                <td
-                                                    class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                    {{ $producto->subcategoria->nombre }}
+                                                @if (!empty($producto->subcategoria_id))
+                                                    <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                        {{ $producto->subcategoria->nombre }}</td>
+                                                @else
+                                                <td class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                    Sin Subcategoría</td>
+                                                    
+                                                @endif
                                                 </td>
                                                 <td
                                                     class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">

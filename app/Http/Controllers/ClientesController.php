@@ -41,6 +41,7 @@ class ClientesController extends Controller
             'telefono' => 'required|min:10|max:10',
             'pais' => 'required',
             'ciudad' => 'required',
+            'descripcion' => 'required',
             'imagen' => 'required'
         ]);
         //Se hace el registro en la tabla de clientes
@@ -52,6 +53,7 @@ class ClientesController extends Controller
             'telefono' => $request->telefono,
             'pais_id' => $request->pais,
             'imagen' => $request->imagen,
+            'descripcion' => $request->descripcion,
             'ciudad' => $request->ciudad,
         ]);
         //Se retorna a la vista de clientes
@@ -80,6 +82,7 @@ class ClientesController extends Controller
             'telefono' => 'required|min:10|max:10',
             'pais' => 'required',
             'ciudad' => 'required',
+            'descripcion' => 'required',
             'imagen' => 'required'
         ]);
         //Actualizacion de datos
@@ -92,6 +95,7 @@ class ClientesController extends Controller
             'pais_id' => $request->pais,
             'imagen' => $request->imagen,
             'ciudad' => $request->ciudad,
+            'descripcion' => $request->descripcion
         ]);
         //Se retorna a la vista de clientees
         return redirect()->route('clientes.index')->with('success','El cliente se ha actualizado correctamente');

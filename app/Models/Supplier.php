@@ -16,7 +16,8 @@ class Supplier extends Model
         'imagen',
         'email',
         'pais_id',
-        'ciudad'
+        'ciudad',
+        'descripcion'
     ];
 
     public function compras(){
