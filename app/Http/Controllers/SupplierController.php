@@ -75,6 +75,8 @@ class SupplierController extends Controller
                 'codigo' => 'required',
                 'telefono'=>'required',
                 'email'=>'required|email',
+                'pais'=>'required',
+                'ciudad'=>'required',
                 'imagen' => 'required'
             ]);
     
@@ -84,6 +86,8 @@ class SupplierController extends Controller
                 'codigo'=>$request->codigo,
                 'telefono'=>$request->telefono,
                 'email'=>$request->email,
+                'pais_id'=>$request->pais,
+                'ciudad'=>$request->ciudad,
                 'imagen'=>$request->imagen
             ]);
     

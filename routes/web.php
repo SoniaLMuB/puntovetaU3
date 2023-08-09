@@ -59,7 +59,7 @@ Route::get('/editProduct/{id_product}',[ProductosController::class,'edit'])->nam
 //Ruta para actualizar el producto
 Route::post('/actualizarProducto', [ProductosController::class, 'update'])->name('producto.update');
 //Ruta para eliminar productos
-Route::get('/deleteProductos/{id_productos}', [ProductosController::class, 'delete'])->name('producto.delete');
+Route::delete('/deleteProductos/{id_productos}', [ProductosController::class, 'delete'])->name('producto.delete');
 
 //Ruta para la vista de categorias
 Route::get('/categories', [CategoriasController::class, 'index'])->name('categorias.index');
@@ -72,7 +72,7 @@ Route::get('/editCategories/{id_categoria}', [CategoriasController::class, 'edit
 //Ruta para actualizar la categoria
 Route::post('/editCategories', [CategoriasController::class, 'update'])->name('category.update');
 //Ruta para eliminar la categoria
-Route::get('/deleteCategories/{id_categoria}', [CategoriasController::class, 'delete'])->name('categorias.delete');
+Route::delete('/deleteCategories/{id_categoria}', [CategoriasController::class, 'delete'])->name('categorias.delete');
 
 //Ruta para retornar la vista de marcas
 Route::get('/branch', [MarcasController::class, 'index'])->name('marcas.index');
@@ -85,7 +85,7 @@ Route::get('/editBranch/{id_branch}', [MarcasController::class, 'view'])->name('
 //Ruta para modificar la marca en la base de datos
 Route::post('/updateBranch', [MarcasController::class, 'update'])->name('marcas.update');
 //Ruta para eliminar la marca de la base de datos
-Route::get('/deleteBranch/{id_branch}', [MarcasController::class, 'delete'])->name('marcas.delete');
+Route::delete('/deleteBranch/{id_branch}', [MarcasController::class, 'delete'])->name('marcas.delete');
 
 
 //Ruta para retornar la vista de subcategorias
@@ -99,7 +99,7 @@ Route::get('/editSubCategory/{id_subCategory}', [subCategoriaController::class, 
 //Ruta para actualizar la subcategoria
 Route::post('/updateSubCategory', [subCategoriaController::class, 'update'])->name('subCategorias.update');
 //Ruta para eliminar la subcategoria de la base de datos
-Route::get('/deleteSubCategory/{id_subCategory}', [subCategoriaController::class, 'delete'])->name('subCategorias.delete');
+Route::delete('/deleteSubCategory/{id_subCategory}', [subCategoriaController::class, 'delete'])->name('subCategorias.delete');
 //Ruta para obtener las subcategorias de las categorias padres
 Route::get('/subcategorias/getSubcategory/{id_categoria}', [subCategoriaController::class, 'getSubcategories'])->name('subCategorias.getSubcategories');
 
@@ -124,7 +124,7 @@ Route::get('/suppliers/update/{id_proveedor}',[SupplierController::class,'edit']
 //Ruta para actualizar la informacion del proveedor
 Route::post('/suppliers/update',[SupplierController::class,'update'])->name('supplier.update');
 //Ruta para eliminar el proveedor
-Route::get('/suppliers/delete/{id_proveedor}',[SupplierController::class,'delete'])->name('supplier.delete');
+Route::delete('/suppliers/delete/{id_proveedor}',[SupplierController::class,'delete'])->name('supplier.delete');
 
 
 //Ruta para retonar la vista de clientes
@@ -138,7 +138,7 @@ Route::get('/clientes/update/{id_cliente}',[ClientesController::class,'edit'])->
 //Ruta para actualizar la info del cliente
 Route::post('/clientes/update',[ClientesController::class,'update'])->name('clientes.update');
 //Ruta para eliminar el cliente
-Route::get('/clientes/delete/{id_cliente}',[ClientesController::class,'delete'])->name('clientes.delete');
+Route::delete('/clientes/delete/{id_cliente}',[ClientesController::class,'delete'])->name('clientes.delete');
 
 //Ruta para la vista de recibos
 Route::get('/recibos',[RecibosController::class,'index'])->name('recibos.index');
@@ -157,7 +157,7 @@ Route::post('/compras/create',[ComprasController::class,'store']);
 //Ruta para redirigir a la vista de editar compra
 Route::get('/compras/show/{id_compra}',[ComprasController::class,'show'])->name('compras.show');
 //Ruta para eliminar la compra de la base de datos
-Route::get('/compras/delete/{id_compra}',[ComprasController::class,'delete'])->name('compras.delete');
+Route::delete('/compras/delete/{id_compra}',[ComprasController::class,'delete'])->name('compras.delete');
 //Ruta para obtener el producto en la tabla
 Route::get('/compras/getProducto/{id_producto}',[ComprasController::class,'getProduct'])->name('compras.getProducto');
 
@@ -173,7 +173,7 @@ Route::get('/users/update/{id_usuario}',[UsersController::class,'show'])->name('
 //Ruta para actualizar al usuario
 Route::post('/users/update',[UsersController::class,'update'])->name('users.update');
 //Ruta para eliminar el usuario
-Route::get('/users/delete/{id_usuario}',[UsersController::class,'delete'])->name('users.delete');
+Route::delete('/users/delete/{id_usuario}',[UsersController::class,'delete'])->name('users.delete');
 
 
 //Ruta para procesar la imagenes en el controlador

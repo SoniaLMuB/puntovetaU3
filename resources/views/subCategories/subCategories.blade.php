@@ -77,12 +77,12 @@
                                                     </div>
                                                 </td>
                                                 <td
-                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                <p
-                                                    class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
-                                                    {{ $subCategoria->categorias->nombre }}
-                                                </p>
-                                            </td>
+                                                    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                    <p
+                                                        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                                        {{ $subCategoria->categorias->nombre }}
+                                                    </p>
+                                                </td>
                                                 <td
                                                     class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                                     <p
@@ -111,7 +111,13 @@
                                                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                         </svg>
                                                     </a>
-                                                    <a href="{{ route('subCategorias.delete', $subCategoria->id) }}">
+                                                    <button class="btn-delete" data-id="{{ $subCategoria->id }}">
+                                                        <form id="delete-form-{{ $subCategoria->id }}"
+                                                            action="{{ route('subCategorias.delete', $subCategoria->id) }}"
+                                                            method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                         <svg style="margin-left: 30px; color:red;"
                                                             xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-trash3-fill"
@@ -119,7 +125,7 @@
                                                             <path
                                                                 d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                                         </svg>
-                                                    </a>
+                                                    </button>
 
                                                 </td>
                                             </tr>
@@ -144,4 +150,33 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $('.btn-delete').on('click', function(e) {
+            e.preventDefault();
+
+            let Id = $(this).data('id');
+
+            Swal.fire({
+                title: "¿Estás seguro de eliminar la subcategoria?",
+                text: "Los cambios no se revertirán",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true,
+                dangerMode: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Envía el formulario de eliminación si el usuario confirma
+                    $(`#delete-form-${Id}`).submit();
+                }
+            });
+        });
+    </script>
 @endsection

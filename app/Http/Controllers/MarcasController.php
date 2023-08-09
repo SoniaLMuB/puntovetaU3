@@ -44,7 +44,7 @@ class MarcasController extends Controller
             'imagen' => $request->imagen
         ]);
         //Se retorna a la vista de marcas
-        return redirect()->route('marcas.index')->with('success','La marca se ha creado correctamente');
+        return redirect()->route('marcas.index')->with('success', 'La marca se ha creado correctamente');
     }
 
     //Funcion para retornar a la vista de retornar marca
@@ -72,15 +72,22 @@ class MarcasController extends Controller
         ]);
 
         //Se retorna a la vista de marcas
-        return redirect()->route('marcas.index')->with('success','La marca se ha actualizado correctamente');
+        return redirect()->route('marcas.index')->with('success', 'La marca se ha actualizado correctamente');
     }
 
     //Funcion para eliminar la marca
     public function delete($id_marca)
     {
-        //Se busca la categoria en el modelo y se elimina
-        Marca::find($id_marca)->delete();
-        return redirect()->route('marcas.index')->with('success','La marca se ha eliminado correctamente');
-
+        try {
+            $marca = Marca::findOrFail($id_marca);
+            $marca->delete();
+            // Redirige de regreso con un mensaje de éxito
+            return redirect()->route('marcas.index')
+                ->with('success', 'La marca se ha eliminado correctamente');
+        } catch (\Exception $e) {
+            // En caso de error, redirige de regreso con un mensaje de error
+            return redirect()->route('marcas.index')
+                ->with('error', 'Hubo un error al eliminar la marca');
+        }
     }
 }

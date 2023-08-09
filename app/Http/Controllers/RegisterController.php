@@ -32,8 +32,7 @@ class RegisterController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash::make para encriptar la password
-            'role'=>1,
-            'status'=>1
+
         ]);
 
         // Otra forma de autenticar

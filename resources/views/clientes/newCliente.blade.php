@@ -46,15 +46,15 @@
                                                         <label for="nombre"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
                                                             del cliente</label>
+
+                                                        <input type="text" name="nombre" value="{{ old('nombre') }}"
+                                                            placeholder="Ingrese nombre del cliente"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('nombre')
-                                                            <p
-                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="nombre" value="{{old('nombre')}}"
-                                                            placeholder="Ingrese nombre del cliente"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
@@ -63,15 +63,15 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Código
                                                         </label>
+
+                                                        <input type="number" name="codigo" value="{{ old('codigo') }}"
+                                                            placeholder="Ingrese el codigo del cliente"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('codigo')
-                                                            <p
-                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="number" name="codigo" value="{{old('codigo')}}"
-                                                            placeholder="Ingrese el codigo del cliente"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
@@ -80,15 +80,15 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Empresa
                                                         </label>
+
+                                                        <input type="text" name="empresa" value="{{ old('empresa') }}"
+                                                            placeholder="Ingrese la empresa del cliente"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('empresa')
-                                                            <p
-                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="empresa" value="{{old('empresa')}}"
-                                                            placeholder="Ingrese la empresa del cliente"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
@@ -97,15 +97,14 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Telefono
                                                         </label>
+                                                        <input type="number" name="telefono" value="{{ old('telefono') }}"
+                                                            placeholder="Ingrese el telefono del cliente"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('telefono')
-                                                            <p
-                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="number" name="telefono" value="{{old('telefono')}}"
-                                                            placeholder="Ingrese el telefono del cliente"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
@@ -114,41 +113,43 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Correo eléctronico
                                                         </label>
+                                                        <input type="email" name="email" value="{{ old('email') }}"
+                                                            placeholder="Ingrese el telefono del cliente"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('email')
-                                                            <p
-                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="email" name="email" value="{{old('email')}}"
-                                                            placeholder="Ingrese el telefono del cliente"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
                                                     <div class="mb-4">
-                                                        <label for="email"
+                                                        <label for="pais"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             País
                                                         </label>
-                                                        @error('pais')
-                                                            <p
-                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
-                                                                {{ $message }}
-                                                            </p>
-                                                        @enderror
                                                         <select
-                                                        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-900 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-900 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
                                                             name="pais" id="pais">
-                                                            <option value="">Seleccione</option>
+                                                            <option value="" {{ old('pais') ? '' : 'selected' }}>
+                                                                Seleccione</option>
                                                             @if ($paises && count($paises) > 0)
                                                                 @foreach ($paises as $pais)
-                                                                    <option value="{{ $pais->id }}">{{ $pais->name }}</option>
+                                                                    <option value="{{ $pais->id }}"
+                                                                        {{ old('pais') == $pais->id ? 'selected' : '' }}>
+                                                                        {{ $pais->name }}
+                                                                    </option>
                                                                 @endforeach
                                                             @else
                                                                 <option value="">No hay paises</option>
-                                                            @endif 
+                                                            @endif
                                                         </select>
+                                                        @error('pais')
+                                                            <p class="text-red-500 my-2 rounded-lg text-sm p-2 text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
@@ -157,32 +158,31 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
                                                             Ciudad
                                                         </label>
+                                                        <input type="text" name="ciudad" value="{{ old('ciudad') }}"
+                                                            placeholder="Ingrese el nombre de la ciudad"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('ciudad')
-                                                            <p
-                                                                class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
-                                                        <input type="text" name="ciudad" value="{{old('ciudad')}}"
-                                                            placeholder="Ingrese el nombre de la ciudad"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                     </div>
                                                 </div>
                                                 @error('imagen')
-                                                    <p
-                                                        class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                    <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                         {{ $message }}
                                                     </p>
                                                 @enderror
                                             </div>
-                                            <input type="hidden" name="imagen" value="{{old('imagen')}}">
+                                            <input type="hidden" name="imagen" value="{{ old('imagen') }}">
                                             <div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                                                 <div class="flex justify-end flex-wrap -mx-3">
                                                     <div class="flex-none w-2/2 max-w-full text-right">
                                                         <button type="submit"
                                                             class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
-                                                            href="javascript:;"> <i class="fas fa-plus" aria-hidden="true">
+                                                            href="javascript:;"> <i class="fas fa-plus"
+                                                                aria-hidden="true">
                                                             </i>&nbsp;&nbsp;Registrar
                                                             Cliente</button>
                                                     </div>
