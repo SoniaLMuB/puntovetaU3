@@ -17,7 +17,8 @@ class Cliente extends Model
         'telefono',
         'imagen',
         'pais_id',
-        'ciudad'
+        'ciudad',
+        'descripcion',
     ];
 
     public function pais()

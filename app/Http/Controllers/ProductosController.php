@@ -45,7 +45,6 @@ class ProductosController extends Controller
             'precio_compra'=>'required',
             'stock'=>'required',
             'categoria'=>'required',
-            'subcategoria'=>'required',
             'marca'=>'required',
             'imagen'=>'required'
         ]);

@@ -39,6 +39,7 @@ class SupplierController extends Controller
             'email'=>'required|email',
             'imagen'=>'required',
             'ciudad'=>'required',
+            'descripcion' => 'required',
             'pais'=>'required'
         ]);
         //Se añade el registro a la base de datos
@@ -49,6 +50,7 @@ class SupplierController extends Controller
             'email'=>$request->email,
             'imagen'=>$request->imagen,
             'pais_id'=>$request->pais,
+            'descripcion' => $request->descripcion,
             'ciudad'=>$request->ciudad
         ]);
 
@@ -77,6 +79,7 @@ class SupplierController extends Controller
                 'email'=>'required|email',
                 'pais'=>'required',
                 'ciudad'=>'required',
+                'descripcion' => 'required',
                 'imagen' => 'required'
             ]);
     
@@ -88,7 +91,8 @@ class SupplierController extends Controller
                 'email'=>$request->email,
                 'pais_id'=>$request->pais,
                 'ciudad'=>$request->ciudad,
-                'imagen'=>$request->imagen
+                'imagen'=>$request->imagen,
+                'descripcion' => $request->descripcion
             ]);
     
             //Se retorna a la vista de proveedores

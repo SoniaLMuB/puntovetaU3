@@ -41,7 +41,7 @@
                                         <form action="{{ route('clientes.create') }}" method="POST" novalidate>
                                             @csrf
                                             <div class="flex flex-wrap -mx-3">
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="nombre"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
@@ -57,7 +57,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="codigo"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -74,7 +74,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="empresa"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -91,7 +91,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="telefono"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -107,7 +107,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="email"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -123,7 +123,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                                     <div class="mb-4">
                                                         <label for="pais"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -160,8 +160,29 @@
                                                         </label>
                                                         <input type="text" name="ciudad" value="{{ old('ciudad') }}"
                                                             placeholder="Ingrese el nombre de la ciudad"
-                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg 
+                                                            border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all
+                                                            placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                                         @error('ciudad')
+                                                            <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="w-1/2 max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                                    <div class="mb-4">
+                                                        <label for="descripcion"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                            Descripción
+                                                        </label>
+                                                        <textarea style="color:black" name="descripcion"  value="{{old('descripcion')}}"
+                                                        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg 
+                                                            border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all
+                                                            placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"  
+                                                        placeholder="Ingrese la descripción del cliente">
+                                                        </textarea>
+                                                        @error('descripcion')
                                                             <p class="text-red-500  my-2 rounded-lg text-sm p-2 text-center">
                                                                 {{ $message }}
                                                             </p>
