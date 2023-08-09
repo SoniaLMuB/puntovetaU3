@@ -50,6 +50,9 @@
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Email</th>
                                         <th
+                                            class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Descripción</th>
+                                        <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Acciones</th>
                                     </tr>
@@ -93,6 +96,11 @@
                                                         class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
                                                         {{ $proveedor->email }}
                                                     </p>
+                                                </td>
+                                                <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                    <div class="truncated-text-d" style="width: 200px;">{{ $->descripcion }}</div>
+                                                    <button class="view-more-button-d" style="display:none; color: #72def1 !important">Ver más</button>
+                                                    <button class="view-less-button-d" style="display:none; color: #72def1 !important">Ver menos</button>
                                                 </td>
                                                 <td
                                                     class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
