@@ -425,26 +425,6 @@
                         </a>
                     </li>
                     <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Recibos
-                        </h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="{{ route('recibos.index') }}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor"
-                                    class="bi bi-file-earmark-bar-graph-fill relative top-0 text-sm leading-normal text-pink-500"
-                                    viewBox="0 0 16 16">
-                                    <path
-                                        d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm.5 10v-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-2.5.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1zm-3 0a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-1z" />
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Ver recibos</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
                         <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
                             Cotización</h6>
                     </li>
@@ -582,7 +562,84 @@
         <script src="{{ URL::asset('js/jquery/jquery.min.js') }}"></script>
         <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
         <script src="{{ URL::asset('js/datatables.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+            integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.js"
+            integrity="sha512-sk0cNQsixYVuaLJRG0a/KRJo9KBkwTDqr+/V94YrifZ6qi8+OO3iJEoHi0LvcTVv1HaBbbIvpx+MCjOuLVnwKg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+        <script>
+            //Se inicializan las funciones para exportar los archivos PDF y Excel de las tablas
+            function exportToPDF(tipo) {
+                var maintable = document.getElementById('table1');
+                var pdfout = document.getElementById('pdfout');
+                var doc = new jsPDF('p', 'pt', 'letter');
+                var margin = 20;
+                var scale = (doc.internal.pageSize.width - margin * 2) / document.body.clientWidth;
+                var scale_mobile = (doc.internal.pageSize.width - margin * 2) / document.body.getBoundingClientRect();
+                //Se obtiene el tipo de dispositivo en donde esta el navegador
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    //Se agregan los componentes a la tabla del PDF
+                    doc.html(maintable, {
+                        x: margin,
+                        y: margin,
+                        html2canvas: {
+                            scale: scale,
+                            ignoreElements: function(element) {
+                                return element.classList.contains('exclude-column');
+                            }
+                        },
+                        callback: function(doc) {
+                            doc.save(tipo + '.pdf');
+                        }
+                    });
+                } else {
+                    doc.html(maintable, {
+                        x: margin,
+                        y: margin,
+                        html2canvas: {
+                            scale: scale,
+                            ignoreElements: function(element) {
+                                return element.classList.contains('exclude-column');
+                            }
+                        },
+                        callback: function(doc) {
+                            doc.save(tipo + '.pdf');
+                        }
+                    });
+                }
+            }
+            //Funcion para exportar el xlsx
+            function exportarXLSX(tipo) {
+                // Obtén la tabla que deseas exportar
+                const table = document.getElementById('table1');
 
+                // Crea un nuevo libro de trabajo de Excel
+                const workbook = XLSX.utils.table_to_book(table);
+
+                // Genera un archivo de Excel a partir del libro de trabajo
+                const excelBuffer = XLSX.write(workbook, {
+                    bookType: 'xlsx',
+                    type: 'array'
+                });
+
+                // Crea un blob a partir del buffer de Excel
+                const blob = new Blob([excelBuffer], {
+                    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                });
+
+                // Crea un enlace de descarga para el archivo de Excel
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = tipo + '.xlsx';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        </script>
         <script>
             $(document).ready(function() {
 
