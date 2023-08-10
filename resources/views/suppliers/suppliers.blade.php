@@ -70,6 +70,12 @@
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Email</th>
                                         <th
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            País</th>
+                                        <th
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Ciudad</th>
+                                        <th
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Descripción</th>
                                         <th
@@ -117,10 +123,24 @@
                                                         {{ $proveedor->email }}
                                                     </p>
                                                 </td>
+                                                <td
+                                                    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                    <p
+                                                        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                                        {{ $proveedor->pais->name }}
+                                                    </p>
+                                                </td>
+                                                <td
+                                                    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                    <p
+                                                        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                                        {{ $proveedor->ciudad }}
+                                                    </p>
+                                                </td>
                                                 <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                    <div class="truncated-text-d" style="width: 200px;">{{ $->descripcion }}</div>
-                                                    <button class="view-more-button-d" style="display:none; color: #72def1 !important">Ver más</button>
-                                                    <button class="view-less-button-d" style="display:none; color: #72def1 !important">Ver menos</button>
+                                                    <div class="truncated-text-d" >{{ $proveedor->descripcion }}</div>
+                                                    <button class="view-more-button-d" style="display:none; color: #3B82F6 !important">Ver más</button>
+                                                    <button class="view-less-button-d" style="display:none; color: #3B82F6 !important">Ver menos</button>
                                                 </td>
                                                 <td
                                                     class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent exclude-column">
@@ -202,5 +222,93 @@
                 }
             });
         });
+
+        // Función para truncar el texto y mostrar el botón "ver más"
+        function truncateText() {
+            const textElements = document.querySelectorAll('.truncated-text-t');
+            const textElements2 = document.querySelectorAll('.truncated-text-d');
+            const maxCharacters = 50; //  número máximo de caracteres que se muestran mostrar inicialmente
+
+            textElements.forEach((element) => {
+                const text = element.textContent;
+                if (text.length > maxCharacters) {
+                    const truncatedText = text.slice(0, maxCharacters) + ' ...';
+                    const fullText = text;
+
+                    element.textContent = truncatedText;
+
+                    const viewMoreButton = document.createElement('button');
+                    viewMoreButton.innerText = 'Ver más';
+                    viewMoreButton.className = 'view-more-button-t';
+                    viewMoreButton.setAttribute('style', ' color: #3B82F6 !important;'); 
+                    viewMoreButton.addEventListener('click', () => {
+                        element.textContent = fullText;
+                        viewMoreButton.style.display = 'none';
+                        viewLessButton.style.display = 'inline-block';
+                        viewMoreButton.style.color = '#3B82F6';
+                        viewLessButton.style.color = '#3B82F6';
+                    });
+
+                    const viewLessButton = document.createElement('button');
+                    viewLessButton.innerText = 'Ver menos';
+                    viewLessButton.className = 'view-less-button-t';
+                    viewLessButton.style.display = 'none';
+                    viewLessButton.setAttribute('style', 'display: none; color: #3B82F6 !important;'); // Agrega el estilo aquí
+                    viewLessButton.addEventListener('click', () => {
+                        element.textContent = truncatedText;
+                        viewMoreButton.style.display = 'inline-block';
+                        viewLessButton.style.display = 'none';
+                        viewMoreButton.style.color = '#3B82F6';
+                        viewLessButton.style.color = '#3B82F6';
+                    });
+
+                    element.parentNode.appendChild(viewMoreButton);
+                    element.parentNode.appendChild(viewLessButton);
+                }
+            });
+
+            textElements2.forEach((element) => {
+                const text = element.textContent;
+                if (text.length > maxCharacters) {
+                    const truncatedText = text.slice(0, maxCharacters) + ' ...';
+                    const fullText = text;
+
+                    element.textContent = truncatedText;
+
+                    const viewMoreButton = document.createElement('button');
+                    viewMoreButton.innerText = 'Ver más';
+                    viewMoreButton.className = 'view-more-button-d';
+                    viewMoreButton.setAttribute('style', ' color: #3B82F6 !important;'); // Agrega el estilo aquí
+                    
+                    viewMoreButton.addEventListener('click', () => {
+                        element.textContent = fullText;
+                        viewMoreButton.style.display = 'none';
+                        viewLessButton.style.display = 'inline-block';
+                        
+                    });
+
+                    const viewLessButton = document.createElement('button');
+                    viewLessButton.innerText = 'Ver menos';
+                    viewLessButton.className = 'view-less-button-d';
+                    viewLessButton.style.display = 'none';
+                    viewLessButton.setAttribute('style', 'display: none; color: #3B82F6 !important;'); // Agrega el estilo aquí
+                    
+                    viewLessButton.addEventListener('click', () => {
+                        element.textContent = truncatedText;
+                        viewMoreButton.style.display = 'inline-block';
+                        viewLessButton.style.display = 'none';
+                        viewMoreButton.style.color = '#3B82F6';
+                        viewLessButton.style.color = '#3B82F6';
+                    });
+
+                    element.parentNode.appendChild(viewMoreButton);
+                    element.parentNode.appendChild(viewLessButton);
+                }
+            });
+        }
+
+        // Ejecutar la función al cargar la página
+        window.addEventListener('DOMContentLoaded', truncateText);
+
     </script>
 @endsection
