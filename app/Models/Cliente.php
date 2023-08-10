@@ -25,4 +25,8 @@ class Cliente extends Model
     {
         return $this->belongsTo(Country::class, 'pais_id');
     }
+
+    public function venta(){
+        return $this->hasMany(Venta::class);
+    }
 }

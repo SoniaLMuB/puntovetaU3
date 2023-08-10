@@ -112,6 +112,12 @@ Route::get('/ventasDetalles',[VentasController::class,'show'])->name('ventas.sho
 Route::get('/ventasDevolucion',[VentasController::class,'mostrar'])->name('ventas.devoluciones');
 //Ruta para la vista de añadir venta
 Route::get('/ventas/create',[VentasController::class,'create'])->name('ventas.create');
+//Ruta para registrar las ventas en la base de datos
+Route::post('/ventas/create',[VentasController::class,'store']);
+
+//Ruta para obtener todos los productos
+Route::get('/productos-por-categoria/{categoria_id}',[VentasController::class,'getProductos'])->name('ventas.getProductos');
+
 
 //Ruta para retonar la vista de proveedores
 Route::get('/suppliers',[SupplierController::class,'index'])->name('supplier.index');
@@ -140,8 +146,7 @@ Route::post('/clientes/update',[ClientesController::class,'update'])->name('clie
 //Ruta para eliminar el cliente
 Route::delete('/clientes/delete/{id_cliente}',[ClientesController::class,'delete'])->name('clientes.delete');
 
-//Ruta para la vista de recibos
-Route::get('/recibos',[RecibosController::class,'index'])->name('recibos.index');
+
 
 //Ruta para la vista de cotizaciones
 Route::get('/cotizaciones',[CotizacionesController::class,'index'])->name('cotizaciones.index');
