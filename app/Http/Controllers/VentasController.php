@@ -15,13 +15,17 @@ class VentasController extends Controller
     //Función que dirigirá a la vista del listado de ventas
     public function index()
     {
-        return view('ventas.listadoVentas');
+        $ventas = Venta::with('cliente')->get();
+        return view('ventas.listadoVentas', ['ventas' => $ventas]);
     }
 
     //Función que dirigirá a la vista dertalle de ventas
-    public function show()
+    public function show($id_venta)
     {
-        return view('ventas.detallesVentas');
+
+        $venta = Venta::with('cliente')->where('id', $id_venta)->get();
+        $detalleVenta = DetalleVenta::with('producto')->where('venta_id', $id_venta)->get();
+        return view('ventas.detallesVentas', ['venta' => $venta, 'detalle' => $detalleVenta]);
     }
 
     //Función que dirigirá a la vista del listado de ventas
@@ -38,12 +42,17 @@ class VentasController extends Controller
         return view('ventas.addVenta', ['categorias' => $categories, 'clientes' => $clientes]);
     }
 
+
+    //Funcion para consultar los productos del flitrado
     public function getProductos($categoria_id)
     {
         if ($categoria_id == 'all') {
-            $productos = Producto::all();
+            $productos = Producto::where('stock', '>', 0)->get();
         } else {
-            $productos = Producto::with('categoria')->where('categoria_id', $categoria_id)->get();
+            $productos = Producto::with('categoria')
+                ->where('categoria_id', $categoria_id)
+                ->where('stock', '>', 0)
+                ->get();
         }
 
         return response()->json($productos);
@@ -65,6 +74,8 @@ class VentasController extends Controller
         $venta->iva = $request->input('iva');
         $venta->subtotal = $request->input('subtotal');
         $venta->total = $request->input('total');
+        $venta->creado_por = auth()->user()->username;
+        $venta->fecha = now();
         $venta->save();
 
         $productos = $request->input('producto_id');
@@ -84,12 +95,13 @@ class VentasController extends Controller
         }
 
         return redirect()->route('ventas.index')->with('success', 'Venta realizada con éxito!');
+    }
 
-
-
-
-
-
-
+    //Funcion para eliminar la venta
+    public function delete($id_venta)
+    {
+        //Se busca la categoria en el modelo y se elimina
+        Venta::find($id_venta)->delete();
+        return redirect()->route('ventas.index')->with('success', 'La venta se ha eliminado correctamente');
     }
 }

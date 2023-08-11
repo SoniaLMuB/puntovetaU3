@@ -18,8 +18,8 @@ class DetalleVenta extends Model
     ];
 
     //Se hacen relaciones a las tablas
-    public function productos(){
-        return $this->belongsTo(Producto::class);
+    public function producto(){
+        return $this->belongsTo(Producto::class,'producto_id');
     }
 
     public function venta(){

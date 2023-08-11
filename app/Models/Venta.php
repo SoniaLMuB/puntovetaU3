@@ -14,7 +14,9 @@ class Venta extends Model
         'referencia',
         'subtotal',
         'iva',
-        'total'
+        'total',
+        'creado_por',
+        'fecha'
     ];
 
     //Se hacen las relaciones a las tablas
@@ -24,6 +26,6 @@ class Venta extends Model
     }
 
     public function cliente(){
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Cliente::class,'customer_id');
     }
 }

@@ -229,7 +229,7 @@
                                                     {{ $message }}
                                                 </p>
                                             @enderror
-                                            <input type="hidden" name="imagen">
+                                            <input type="hidden" name="imagen" value="{{old('imagen')}}">
                                             <div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                                                 <div class="flex justify-end flex-wrap -mx-3">

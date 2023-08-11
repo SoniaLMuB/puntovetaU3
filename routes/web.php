@@ -107,17 +107,17 @@ Route::get('/subcategorias/getSubcategory/{id_categoria}', [subCategoriaControll
 //Ruta para retornar la vista de  listdo de ventas
 Route::get('/ventas', [VentasController::class,'index'])->name('ventas.index');
 //Ruta para retornar la vista de detalles de ventas
-Route::get('/ventasDetalles',[VentasController::class,'show'])->name('ventas.show');
+Route::get('/ventasDetalles/{id_venta}',[VentasController::class,'show'])->name('ventas.show');
 //Ruta para retornar la vista de devoluciones
 Route::get('/ventasDevolucion',[VentasController::class,'mostrar'])->name('ventas.devoluciones');
 //Ruta para la vista de añadir venta
 Route::get('/ventas/create',[VentasController::class,'create'])->name('ventas.create');
 //Ruta para registrar las ventas en la base de datos
 Route::post('/ventas/create',[VentasController::class,'store']);
-
 //Ruta para obtener todos los productos
 Route::get('/productos-por-categoria/{categoria_id}',[VentasController::class,'getProductos'])->name('ventas.getProductos');
-
+//Ruta para eliminar la venta de la base de datos
+Route::delete('/ventas/delete/{id_venta}',[VentasController::class,'delete'])->name('ventas.delete');
 
 //Ruta para retonar la vista de proveedores
 Route::get('/suppliers',[SupplierController::class,'index'])->name('supplier.index');
