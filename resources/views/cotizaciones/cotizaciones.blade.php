@@ -11,6 +11,13 @@
 @endsection
 
 @section('contenido')
+    <style>
+        table td,
+        table th {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
     <div class="w-full px-6 py-6 mx-auto">
         <!-- table 1 -->
         <div class="flex flex-wrap -mx-3">
@@ -20,10 +27,10 @@
                     <div class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div class="flex flex-wrap -mx-3">
                             <div class="flex items-center flex-none w-1/2 max-w-full px-3">
-                                <h4 class="mb-0 dark:text-white">Listado de cotizaciones</h4>
+                                <h4 class="mb-0 dark:text-white">Listado de Cotizaciones</h4>
                             </div>
                             <div class="flex-none w-1/2 max-w-full px-3 text-right">
-                                <a href="{{route('cotizaciones.create')}}"
+                                <a href="{{ route('cotizaciones.create') }}"
                                     class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
                                     href="javascript:;"> <i class="fas fa-plus" aria-hidden="true"> </i>&nbsp;&nbsp;Añadir
                                     cotización</a>
@@ -59,7 +66,7 @@
                                     <tr>
                                         <th
                                             class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Producto
+                                            Nombre de proveedor
                                         </th>
                                         <th
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -67,7 +74,7 @@
                                         </th>
                                         <th
                                             class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Nombre del Cliente
+                                            Fecha
                                         </th>
                                         <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -75,52 +82,74 @@
                                         </th>
                                         <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
-                                            Total
+                                            Gran Total
                                         </th>
                                         <th
-                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70 exclude-column">
                                             Acción
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            09/Julio/2023
-                                        </td>
-                                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            Sonia
-                                        </td>
-                                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            SL0101
-                                        </td>
-                                        <td class="p-2 d-flex justify-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent" style="display: flex; justify-content:center;">
-                                            <button 
-                                            class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white 
-                                                align-middle transition-all rounded-lg cursor-pointer text-sm ease-in shadow-md 
-                                                bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem 
-                                                bg-x-25" style="background-color: #1ddc16">
-                                                Sent
-                                            </button>
-                                        </td>
-                                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        </td>
-                                        <td class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            <a href="{{ route('ventas.show') }}">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                                </svg>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($cotizaciones as $cotizacion)
+                                        <tr>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                {{ $cotizacion->supplier->nombre }}
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                {{ $cotizacion->referencia }}
+
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                {{ $cotizacion->fecha }}
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                <button
+                                                    class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white 
+                                                    align-middle transition-all rounded-lg cursor-pointer text-sm ease-in shadow-md 
+                                                    bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem 
+                                                    bg-x-25"
+                                                    style="background-color: #00f044">
+                                                    Terminada
+                                                </button>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                                ${{ $cotizacion->total }}
+                                            </td>
+                                            <td
+                                                class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent exclude-column">
+                                                <a href="{{ route('cotizaciones.show', $cotizacion->id) }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                        <path
+                                                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                    </svg>
+                                                </a>
+                                                <button class="btn-delete" data-id="{{ $cotizacion->id }}">
+                                                    <form id="delete-form-{{ $cotizacion->id }}"
+                                                        action="{{ route('cotizaciones.delete', $cotizacion->id) }}" method="POST"
+                                                        style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
@@ -128,4 +157,33 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $('.btn-delete').on('click', function(e) {
+            e.preventDefault();
+
+            let Id = $(this).data('id');
+
+            Swal.fire({
+                title: "¿Estás seguro de eliminar la subcategoria?",
+                text: "Los cambios no se revertirán",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true,
+                dangerMode: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Envía el formulario de eliminación si el usuario confirma
+                    $(`#delete-form-${Id}`).submit();
+                }
+            });
+        });
+    </script>
 @endsection

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ asset('img/QPet-Dashboard.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/puntoventa.png') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
 
@@ -52,177 +52,6 @@
 
     @auth
         <!-- sidenav  -->
-        {{-- <aside
-            class="fixed inset-y-0 flex-wrap items-center overflow-y-auto justify-between block w-full p-0 my-4 antialiased transition-transform duration-200 -translate-x-full bg-white border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0"
-            aria-expanded="false">
-            <div class="h-19">
-                <i class="absolute top-0 right-0 p-4 opacity-50 cursor-pointer fas fa-times dark:text-white text-slate-400 xl:hidden"
-                    sidenav-close></i>
-                <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap dark:text-white text-slate-700"
-                    href=" {{ route('post.index') }} ">
-                    <img src="{{ asset('img/QPet-Dashboard.png') }}"
-                        class="inline h-full max-w-full transition-all duration-200 dark:hidden ease-nav-brand max-h-8"
-                        alt="main_logo" />
-                    <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">WatchZone</span>
-                </a>
-            </div>
-
-            <hr class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 
-            to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent"/>
-            <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
-                <ul class="flex flex-col pl-0 mb-0">
-                    <li class="mt-0.5 w-full">
-                        <a class="py-2.7 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
-                            href=" {{ route('post.index') }} ">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-house-door-fill relative top-0 text-sm  text-blue-500" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Productos
-                        </h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="{{route('productos.index')}}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width=24" height="24" fill="currentColor"
-                                    class="bi bi-cart-fill relative top-0 text-sm leading-normal text-orange-500 " viewBox="0 0 16 16">
-                                    <path
-                                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Productos</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
-                            Categorías</h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="{{route('categorias.index')}}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                fill="currentColor" class="bi bi-tag-fill relative top-0 text-sm leading-normal text-red-600 " viewBox="0 0 16 16">
-                                <path
-                                    d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                            </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Categorias</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Marcas
-                        </h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="{{route('marcas.index')}}">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-award-fill relative top-0 text-sm leading-normal text-orange-500" viewBox="0 0 16 16">
-                                  <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-                                  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Marcas</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Ventas
-                        </h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-piggy-bank-fill relative top-0 text-sm leading-normal text-orange-500 " viewBox="0 0 16 16">
-                                  <path d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595Zm7.173 3.876a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199Zm-8.999-.65a.5.5 0 1 1-.276-.96A7.613 7.613 0 0 1 7.964 3.5c.763 0 1.497.11 2.18.315a.5.5 0 1 1-.287.958A6.602 6.602 0 0 0 7.964 4.5c-.64 0-1.255.09-1.826.254ZM5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar venta</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Recibos
-                        </h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-earmark-bar-graph-fill relative top-0 text-sm leading-normal text-blue-500" viewBox="0 0 16 16">
-                                  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm.5 10v-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-2.5.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1zm-3 0a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-1z"/>
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar recibo</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
-                            Cotización</h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-credit-card-2-back-fill relative top-0 text-sm text-blue-500 " viewBox="0 0 16 16">
-                                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z"/>
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar
-                                cotización</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Clientes
-                        </h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-people-fill relative top-0 text-sm leading-normal text-blue-500 " viewBox="0 0 16 16">
-                                  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar clientes</span>
-                        </a>
-                    </li>
-                    <li class="w-full mt-4">
-                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Usuarios
-                        </h6>
-                    </li>
-                    <li class="mt-0.5 w-full">
-                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                            href="">
-                            <div
-                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill relative top-0 text-sm leading-normal text-orange-500" viewBox="0 0 16 16">
-                                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                                </svg>
-                            </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar usuarios</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-        </aside> --}}
         <aside
             class="fixed inset-y-0 flex-wrap items-center overflow-y-auto justify-between block w-full p-0 my-4 antialiased transition-transform duration-200 -translate-x-full bg-white border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0"
             aria-expanded="false">
@@ -231,7 +60,7 @@
                     sidenav-close></i>
                 <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap dark:text-white text-slate-700"
                     href=" {{ route('post.index') }} ">
-                    <img src="{{ asset('img/QPet-Dashboard.png') }}"
+                    <img src="{{ asset('img/puntoventa.png') }}"
                         class="inline h-full max-w-full transition-all duration-200 dark:hidden ease-nav-brand max-h-8"
                         alt="main_logo" />
                     <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">Punto de venta</span>
@@ -274,7 +103,7 @@
                                         d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar productos</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Productos</span>
                         </a>
                     </li>
                     <li class="w-full mt-4">
@@ -293,7 +122,7 @@
                                         d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar categorías</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Categorías</span>
                         </a>
                     </li>
                     <li class="mt-0.5 w-full">
@@ -308,8 +137,7 @@
                                         d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar
-                                subcategorías</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Subcategorías</span>
                         </a>
                     </li>
                     <li class="w-full mt-4">
@@ -329,7 +157,7 @@
                                     <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar marcas</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Marcas</span>
                         </a>
                     </li>
                     <li class="w-full mt-4">
@@ -349,7 +177,7 @@
                                         d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar clientes</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Clientes</span>
                         </a>
                     </li>
                     <li class="mt-0.5 w-full">
@@ -365,8 +193,7 @@
                                         d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar
-                                proveedores</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Proveedores</span>
                         </a>
                     </li>
                     <li class="mt-0.5 w-full">
@@ -381,7 +208,7 @@
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar usuarios</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Usuarios</span>
                         </a>
                     </li>
                     <li class="w-full mt-4">
@@ -401,7 +228,7 @@
                                         d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595Zm7.173 3.876a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199Zm-8.999-.65a.5.5 0 1 1-.276-.96A7.613 7.613 0 0 1 7.964 3.5c.763 0 1.497.11 2.18.315a.5.5 0 1 1-.287.958A6.602 6.602 0 0 0 7.964 4.5c-.64 0-1.255.09-1.826.254ZM5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar venta</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Venta</span>
                         </a>
                     </li>
                     <li class="w-full mt-4">
@@ -421,7 +248,7 @@
                                         d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595Zm7.173 3.876a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199Zm-8.999-.65a.5.5 0 1 1-.276-.96A7.613 7.613 0 0 1 7.964 3.5c.763 0 1.497.11 2.18.315a.5.5 0 1 1-.287.958A6.602 6.602 0 0 0 7.964 4.5c-.64 0-1.255.09-1.826.254ZM5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar compra</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Compra</span>
                         </a>
                     </li>
                     <li class="w-full mt-4">
@@ -441,8 +268,7 @@
                                         d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z" />
                                 </svg>
                             </div>
-                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Registrar
-                                cotización</span>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Cotización</span>
                         </a>
                     </li>
 

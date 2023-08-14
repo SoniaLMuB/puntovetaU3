@@ -148,11 +148,6 @@ Route::delete('/clientes/delete/{id_cliente}',[ClientesController::class,'delete
 
 
 
-//Ruta para la vista de cotizaciones
-Route::get('/cotizaciones',[CotizacionesController::class,'index'])->name('cotizaciones.index');
-//Ruta para la vista de agregar cotizacion
-Route::get('/cotizaciones/addCotizacion',[CotizacionesController::class,'create'])->name('cotizaciones.create');
-
 //Ruta para retornar la vista de  listdo de ventas
 Route::get('/compras', [ComprasController::class,'index'])->name('compras.index');
 //Ruta para la vista de añadir venta
@@ -179,6 +174,20 @@ Route::get('/users/update/{id_usuario}',[UsersController::class,'show'])->name('
 Route::post('/users/update',[UsersController::class,'update'])->name('users.update');
 //Ruta para eliminar el usuario
 Route::delete('/users/delete/{id_usuario}',[UsersController::class,'delete'])->name('users.delete');
+
+//Ruta para retornar la vista de  listdo de cotizacion
+Route::get('/cotizacion', [CotizacionesController::class,'index'])->name('cotizaciones.index');
+//Ruta para la vista de añadir cotizacion
+Route::get('/cotizacion/create',[CotizacionesController::class,'create'])->name('cotizaciones.create');
+//Ruta para almacenar las cotizaciones en la base de datos
+Route::post('/cotizacion/create',[CotizacionesController::class,'store']);
+//Ruta para redirigir a la vista de editar cotizacion
+Route::get('/cotizacion/show/{id_cotizacion}',[CotizacionesController::class,'show'])->name('cotizaciones.show');
+//Ruta para eliminar la cotizacion de la base de datos
+Route::delete('/cotizacion/delete/{id_cotizacion}',[CotizacionesController::class,'delete'])->name('cotizaciones.delete');
+//Ruta para obtener el producto en la tabla
+Route::get('/cotizacion/getProducto/{id_producto}',[CotizacionesController::class,'getProduct'])->name('cotizaciones.getProducto');
+
 
 
 //Ruta para procesar la imagenes en el controlador
