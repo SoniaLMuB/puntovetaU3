@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Devolucion;
 use App\Models\Venta;
 use App\Models\Cliente;
 use App\Models\Producto;
@@ -103,5 +104,28 @@ class VentasController extends Controller
         //Se busca la categoria en el modelo y se elimina
         Venta::find($id_venta)->delete();
         return redirect()->route('ventas.index')->with('success', 'La venta se ha eliminado correctamente');
+    }
+
+    //Funcion para registrar la devolución en la base de datos
+    public function devolver(Request $request){
+        //Se coloca el status de devuelto en la tabla de detalles de venta
+        DetalleVenta::where('id',$request->id)->update([
+            'status'=>0,
+        ]);
+        //Se obtiene el ID de la venta
+        $venta = DetalleVenta::where('id', $request->id)->select('venta_id')->first();
+
+        //Se ingresa la informacion al modelo de devoluciones
+        $customer = Venta::where('id',$venta->venta_id)->select('customer_id')->first();
+
+        //Se añaden los campos en el modelo de Devolucion
+        $devolucion = new Devolucion;
+        $devolucion->venta_id = $venta->venta_id;
+        $devolucion->producto_id= $request->producto_id;
+        $devolucion->customer_id = $customer->customer_id;
+        $devolucion->save();
+        //Se retorna a la vista de devoluciones
+        return redirect()->route('ventas.devoluciones')->with('success', 'La devolución se realizó con éxito!');
+
     }
 }

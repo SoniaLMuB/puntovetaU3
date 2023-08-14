@@ -40,4 +40,8 @@ class Producto extends Model
     public function detalleVenta(){
         return $this->hasMany(DetalleVenta::class);
     }
+
+    public function devolucion(){
+        return $this->hasMany(Devolucion::class);
+    }
 }
