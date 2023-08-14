@@ -29,4 +29,8 @@ class Cliente extends Model
     public function venta(){
         return $this->hasMany(Venta::class);
     }
+
+    public function devolucion(){
+        return $this->hasMany(Devolucion::class);
+    }
 }
