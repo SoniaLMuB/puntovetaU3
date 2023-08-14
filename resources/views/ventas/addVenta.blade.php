@@ -209,7 +209,7 @@
             const shopProductos = document.getElementById('shopProductos');
 
             // Suponiendo un IVA de 16%
-            const IVA_PERCENTAGE = 0.16;
+            const IVA_PERCENTAGE = 1.16;
 
             function updateTotals() {
                 const products = document.querySelectorAll('#shopProductos li');
@@ -227,7 +227,7 @@
                 });
 
                 const iva = subtotal * IVA_PERCENTAGE;
-                const total = subtotal + iva;
+                const total = subtotal;
 
                 document.getElementById('subtotal').value = subtotal.toFixed(2);
                 document.querySelector('label[for="subtotal"]').textContent = `MX$${subtotal.toFixed(2)}`;

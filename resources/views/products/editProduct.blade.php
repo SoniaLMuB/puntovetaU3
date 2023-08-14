@@ -123,11 +123,20 @@
                                                             </p>
                                                         @enderror
                                                         <div class="relative">
-                                                            <select value="{{ $producto->subcategoria->id }}"
+                                                            @if (!empty($producto->subcategoria_id))
+                                                                <select value="{{ $producto->subcategoria->id }}"
+                                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                                                                    name="subcategoria" id="subcategoria">
+                                                                    <option value="">Seleccione</option>
+                                                                </select>
+                                                            @else
+                                                            <select value=""
                                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
                                                                 name="subcategoria" id="subcategoria">
                                                                 <option value="">Seleccione</option>
                                                             </select>
+                                                            @endif
+                                                            
                                                             <div
                                                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                                                 <svg class="fill-current h-4 w-4"
@@ -306,7 +315,7 @@
                         }
                     });
                 } else {
-                    $('#subcategoria').empty().append('<option value="">Selecciona una subcategoría...</option>');
+                    $('#subcategoria').empty().append('<option value="">No hay subcategorias...</option>');
                 }
             }
 
