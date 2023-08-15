@@ -48,15 +48,15 @@
                                         <p>{{ $dato->cliente->ciudad }}</p>
                                     </div>
                                     <!--
-                                                                            <div class="flex-1 px-3">
+                                                                                            <div class="flex-1 px-3">
 
-                                                                                <h6>Información de la compañía</h6>
-                                                                                <p>DGT</p>
-                                                                                <p>ejemplo@gmail.com</p>
-                                                                                <p>876321</p>
-                                                                                <p>CDMX</p>
-                                                                            </div>
-                                                                        -->
+                                                                                                <h6>Información de la compañía</h6>
+                                                                                                <p>DGT</p>
+                                                                                                <p>ejemplo@gmail.com</p>
+                                                                                                <p>876321</p>
+                                                                                                <p>CDMX</p>
+                                                                                            </div>
+                                                                                        -->
                                     <div class="flex-1 px-3">
                                         <h6>Información de la factura</h6>
                                         <div class="flex justify-between">
@@ -168,7 +168,7 @@
                                                 </td>
                                                 <td
                                                     class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                    @if ($data->status == 0)
+                                                    @if ($data->cantidad <= 0)
                                                         <button
                                                             class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white 
                                                 align-middle transition-all rounded-lg cursor-pointer text-sm ease-in shadow-md 
@@ -190,24 +190,32 @@
                                                 </td>
                                                 <td
                                                     class="p-2 text-center align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                    <button class="btn-delete" data-id="{{ $data->id }}"
-                                                        data-confirm-delete="true">
-                                                        <form id="delete-form-{{ $data->id }}"
-                                                            action="{{ route('ventas.devolver') }}" method="POST"
-                                                            style="display: none;">
-                                                            @csrf
-                                                            <input type="hidden" name="id"
-                                                                value="{{ $data->id }}">
-                                                            <input type="hidden" name="producto_id"
-                                                                value="{{ $data->producto->id }}">
-                                                        </form>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
-                                                        </svg>
-                                                    </button>
+                                                    @if ($data->cantidad <= 0)
+                                                        Devolución completa
+                                                    @else
+                                                        <button class="btn-delete" data-id="{{ $data->id }}"
+                                                            data-confirm-delete="true">
+                                                            <form id="delete-form-{{ $data->id }}"
+                                                                action="{{ route('ventas.devolver') }}" method="POST"
+                                                                style="display: none;">
+                                                                @csrf
+                                                                <input type="hidden" name="id"
+                                                                    value="{{ $data->id }}">
+                                                                <input type="hidden" name="producto_id"
+                                                                    value="{{ $data->producto->id }}">
+                                                                <input type="hidden" name="qty"
+                                                                    value="{{ $data->cantidad }}">
+
+                                                            </form>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                                class="w-6 h-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
+                                                            </svg>
+                                                        </button>
+                                                    @endif
+
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -226,25 +234,43 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script>
-        $('.btn-delete').on('click', function(e) {
-            e.preventDefault();
+        document.addEventListener('DOMContentLoaded', () => {
+            const deleteButtons = document.querySelectorAll('.btn-delete');
 
-            let Id = $(this).data('id');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
 
-            Swal.fire({
-                title: "¿Estás seguro de devolver este producto?",
-                text: "Los cambios no se revertirán",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: 'Sí, devolver',
-                cancelButtonText: 'Cancelar',
-                reverseButtons: true,
-                dangerMode: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Envía el formulario de eliminación si el usuario confirma
-                    $(`#delete-form-${Id}`).submit();
-                }
+                    const id = button.getAttribute('data-id');
+                    const form = document.getElementById(`delete-form-${id}`);
+                    const maxQty = form.querySelector('[name="qty"]').value;
+
+                    Swal.fire({
+                        title: 'Devolución de Producto',
+                        input: 'number',
+                        inputAttributes: {
+                            min: 1,
+                            max: maxQty,
+                            step: 1
+                        },
+                        text: `Ingrese la cantidad a devolver (max ${maxQty}):`,
+                        showCancelButton: true,
+                        confirmButtonText: 'Devolver',
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return '¡Necesitas ingresar una cantidad!';
+                            }
+                            if (parseInt(value) > parseInt(maxQty)) {
+                                return `La cantidad máxima a devolver es ${maxQty}`;
+                            }
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.querySelector('[name="qty"]').value = result.value;
+                            form.submit();
+                        }
+                    });
+                });
             });
         });
     </script>

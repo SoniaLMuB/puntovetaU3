@@ -232,6 +232,44 @@
                         </a>
                     </li>
                     <li class="w-full mt-4">
+                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
+                            Devoluciones
+                        </h6>
+                    </li>
+                    <li class="mt-0.5 w-full">
+                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                            href="{{ route('ventas.devoluciones') }}">
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
+                                </svg>
+                            </div>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Devoluciones</span>
+                        </a>
+                    </li>
+                    <li class="w-full mt-4">
+                        <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
+                            Importar
+                        </h6>
+                    </li>
+                    <li class="mt-0.5 w-full">
+                        <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                            href="{{ route('importar.index') }}">
+                            <div
+                                class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
+                                </svg>
+                            </div>
+                            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Importar productos</span>
+                        </a>
+                    </li>
+                    <li class="w-full mt-4">
                         <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">Compras
                         </h6>
                     </li>

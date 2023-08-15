@@ -12,7 +12,8 @@ class Devolucion extends Model
     protected $fillable=[
         'venta_id',
         'producto_id',
-        'customer_id'
+        'customer_id',
+        'fecha'
     ];
 
     public function producto(){

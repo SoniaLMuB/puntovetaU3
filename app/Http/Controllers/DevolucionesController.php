@@ -13,4 +13,12 @@ class DevolucionesController extends Controller
 
         return view('ventas.devolucionesVentas',['devoluciones'=>$devoluciones]);
     }
+
+        //Funcion para eliminar una devolución
+        public function delete($id_devolucion)
+        {
+            //Se busca la categoria en el modelo y se elimina
+            Devolucion::find($id_devolucion)->delete();
+            return redirect()->route('ventas.devoluciones')->with('success', 'La devolución se ha eliminado correctamente');
+        }
 }

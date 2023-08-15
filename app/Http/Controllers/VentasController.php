@@ -108,10 +108,18 @@ class VentasController extends Controller
 
     //Funcion para registrar la devolución en la base de datos
     public function devolver(Request $request){
-        //Se coloca el status de devuelto en la tabla de detalles de venta
-        DetalleVenta::where('id',$request->id)->update([
-            'status'=>0,
-        ]);
+
+        $detalle = DetalleVenta::find($request->input('id'));    
+        $cantidadDevuelta = $request->input('qty');
+        $detalle->cantidad -= $cantidadDevuelta;
+    
+        if ($detalle->cantidad <= 0) {
+            $detalle->status = 0;
+            $detalle->cantidad = 0;
+        }
+    
+        $detalle->save();
+
         //Se obtiene el ID de la venta
         $venta = DetalleVenta::where('id', $request->id)->select('venta_id')->first();
 
@@ -123,6 +131,7 @@ class VentasController extends Controller
         $devolucion->venta_id = $venta->venta_id;
         $devolucion->producto_id= $request->producto_id;
         $devolucion->customer_id = $customer->customer_id;
+        $devolucion->fecha = now();
         $devolucion->save();
         //Se retorna a la vista de devoluciones
         return redirect()->route('ventas.devoluciones')->with('success', 'La devolución se realizó con éxito!');

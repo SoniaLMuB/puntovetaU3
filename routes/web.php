@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImportarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -122,6 +123,9 @@ Route::post('/ventas/devolver',[VentasController::class,'devolver'])->name('vent
 
 //Ruta para retornar la vista de devoluciones
 Route::get('/ventasDevolucion',[DevolucionesController::class,'index'])->name('ventas.devoluciones');
+//Ruta para eliminar devoluciones
+Route::delete('/ventas/devoluciones/delete/{id_devolucion}',[DevolucionesController::class,'delete'])->name('devoluciones.delete');
+
 
 //Ruta para retonar la vista de proveedores
 Route::get('/suppliers',[SupplierController::class,'index'])->name('supplier.index');
@@ -135,6 +139,11 @@ Route::get('/suppliers/update/{id_proveedor}',[SupplierController::class,'edit']
 Route::post('/suppliers/update',[SupplierController::class,'update'])->name('supplier.update');
 //Ruta para eliminar el proveedor
 Route::delete('/suppliers/delete/{id_proveedor}',[SupplierController::class,'delete'])->name('supplier.delete');
+
+
+//Ruta para la vista de importar productos
+Route::get('/importar',[ImportarController::class,'index'])->name('importar.index');
+Route::post('/importarProductos',[ImportarController::class,'store'])->name('importar.store');
 
 
 //Ruta para retonar la vista de clientes

@@ -380,6 +380,70 @@
                     </div>
                 </a>
             </div>
+            <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
+                <a href="{{ route('ventas.devoluciones') }}">
+                    <div
+                        class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                        <div class="flex-auto p-4">
+                            <div class="flex flex-row -mx-3">
+                                <div class="flex-none w-2/3 max-w-full px-3">
+                                    <div>
+                                        <p
+                                            class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
+                                            Gestor</p>
+                                        <h5 class="mb-2 font-bold dark:text-white">Devolución</h5>
+                                        <p class="mb-0 dark:text-white dark:opacity-60">
+                                            <span class="text-sm font-bold leading-normal text-emerald-500">Devoluciones</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="px-3 text-right basis-1/3">
+                                    <div
+                                        class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-emerald-500 to-teal-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24"
+                                        stroke-width="1.5" stroke="currentColor" class="text-lg relative top-3.5 text-white">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
+                                    </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
+                <a href="{{ route('importar.index') }}">
+                    <div
+                        class="relative flex flex-col min-w-0 break-words bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
+                        <div class="flex-auto p-4">
+                            <div class="flex flex-row -mx-3">
+                                <div class="flex-none w-2/3 max-w-full px-3">
+                                    <div>
+                                        <p
+                                            class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
+                                            Importar</p>
+                                        <h5 class="mb-2 font-bold dark:text-white">Productos</h5>
+                                        <p class="mb-0 dark:text-white dark:opacity-60">
+                                            <span class="text-sm font-bold leading-normal text-emerald-500">Devoluciones</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="px-3 text-right basis-1/3">
+                                    <div
+                                        class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-emerald-500 to-teal-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24"
+                                        stroke-width="1.5" stroke="currentColor" class="text-lg relative top-3.5 text-white">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
+                                    </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <footer class="pt-4">
