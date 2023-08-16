@@ -30,6 +30,10 @@
     <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('js/plugins/chartjs.min.js') }}"></script>
 
+    <!--Select2-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -433,6 +437,10 @@
             integrity="sha512-sk0cNQsixYVuaLJRG0a/KRJo9KBkwTDqr+/V94YrifZ6qi8+OO3iJEoHi0LvcTVv1HaBbbIvpx+MCjOuLVnwKg=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+        <!--Js-->
+        <!--Select2-->
+        
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
             //Se inicializan las funciones para exportar los archivos PDF y Excel de las tablas
             function exportToPDF(tipo) {
@@ -506,6 +514,7 @@
         </script>
         <script>
             $(document).ready(function() {
+                $('.js-example-basic-single').select2();
 
                 var table = $('#example').DataTable({
                         responsive: true
@@ -516,6 +525,7 @@
         </script>
         @include('sweetalert::alert')
 
+    
 </body>
 
 </html>
