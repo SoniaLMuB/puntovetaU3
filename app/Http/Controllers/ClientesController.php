@@ -35,7 +35,7 @@ class ClientesController extends Controller
         //Validaciones de formulario
         $this->validate($request, [
             'nombre' => 'required',
-            'codigo' => 'required',
+            'codigo' => 'required|unique:customers',
             'empresa' => 'required',
             'email' => 'required|email|min:3',
             'telefono' => 'required|min:10|max:10',
@@ -76,9 +76,9 @@ class ClientesController extends Controller
         //Validaciones de formulario
         $this->validate($request, [
             'nombre' => 'required',
-            'codigo' => 'required',
+            'codigo' => 'required|unique:customers,codigo,'.$request->id,
             'empresa' => 'required',
-            'email' => 'required|email|min:3|max:20',
+            'email' => 'required|email|min:3',
             'telefono' => 'required|min:10|max:10',
             'pais' => 'required',
             'ciudad' => 'required',

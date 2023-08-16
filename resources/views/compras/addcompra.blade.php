@@ -158,14 +158,30 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0"
-                                                    style="display: flex;
-                                                justify-content: center;
-                                                align-items: center;">
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                                    <div class="mb-4">
+                                                        <label for="stock"
+                                                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                            Precio compra
+                                                        </label>
+                                                        <input type="number" name="precio_compra"
+                                                            value="{{ old('precio_compra') }}"
+                                                            placeholder="Ingrese precio compra a añadir"
+                                                            class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                        @error('precio_compra')
+                                                            <p class="text-red-500 my-2 text-sm text-center">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="w-full max-w-full px-3 shrink-0 md:w-12/12 md:flex-0"
+                                                    style="display: flex; justify-content:end;">
                                                     <div class="mb-4">
                                                         <button id="add_stock" type="button"
                                                             class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all  rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-blue-500  hover:shadow-xs hover:-translate-y-px tracking-tight-rem bg-x-25"
-                                                            href="javascript:;"> <i class="fas fa-plus" aria-hidden="true">
+                                                            href="javascript:;"> <i class="fas fa-plus"
+                                                                aria-hidden="true">
                                                             </i>&nbsp;&nbsp;Añadir
                                                             producto
                                                         </button>
@@ -192,6 +208,10 @@
                                                                     <th
                                                                         class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                                                         Precio de compra
+                                                                    </th>
+                                                                    <th
+                                                                        class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                        Precio de compra nuevo
                                                                     </th>
                                                                     <th
                                                                         class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
@@ -231,56 +251,6 @@
                                                 </div>
                                                 <input type="hidden" name="costo_total" id="inputCostoTotal"
                                                     value="0">
-                                                <!--
-                                                    <div class="flex flex-wrap w-full">
-                                                        <div class="mb-4 w-1/4  md:w-1/3 px-3">
-                                                            <label for="nombre"
-                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
-                                                                Impuesto de pedido
-                                                            </label>
-                                                            <div class="relative">
-                                                                <input type="text" name="impuestoPedido"
-                                                                    value="{{ old('impuestoPedido') }}"
-                                                                    placeholder="Ingrese el impuesto"
-                                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
-                                                            </div>
-                                                            @error('impuestoPedido')
-        <p class="text-red-500 my-2 text-sm text-center">
-                                                                        {{ $message }}
-                                                                    </p>
-    @enderror
-                                                        </div>
-                                                        <div class="mb-4 w-1/4  md:w-1/3 px-3">
-                                                            <label for="fecha"
-                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
-                                                                Descuento
-                                                            </label>
-                                                            <div class="relative">
-                                                                <input type="text" name="descuentoPedido"
-                                                                    value="{{ old('descuentoPedido') }}"
-                                                                    placeholder="Ingrese el descuento"
-                                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
-                                                            </div>
-                                                            @error('descuentoPedido')
-        <p class="text-red-500 my-2 text-sm text-center">
-                                                                        {{ $message }}
-                                                                    </p>
-    @enderror
-                                                        </div>
-                                                        <div class="mb-4 w-1/4 md:w-1/3 px-3">
-                                                            <label for="referencia"
-                                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Envío</label>
-                                                            <input type="number" name="envio" value="{{ old('envio') }}"
-                                                                placeholder="Ingrese la cantidad del envío"
-                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
-                                                            @error('envio')
-        <p class="text-red-500 my-2 text-sm text-center">
-                                                                        {{ $message }}
-                                                                    </p>
-    @enderror
-                                                        </div>
-                                                    </div>
-                                                -->
                                                 <div class="mb-4 w-full">
                                                     <label for="nombre"
                                                         class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
@@ -356,8 +326,10 @@
             //Funcion para añadir el stock a la tabla y a los inputs escodidos en el formulario
             $("#add_stock").click(function() {
                 var stock = $("input[name='stock']").val();
+                var precioCompraModificado = $("input[name='precio_compra']")
+                    .val(); // Obtener el precio de compra modificado
 
-                if (productoSeleccionado && stock && stock > 0) {
+                if (productoSeleccionado && stock && stock > 0 && precioCompraModificado > 0) {
                     var productoExistente = $(`#producto_${productoSeleccionado.id}`);
 
                     if (productoExistente.length) {
@@ -371,9 +343,14 @@
 
                         // Actualiza la celda del "costo total"
                         productoExistente.find(".costo-total").text(nuevoCostoTotal);
+                        productoExistente.find(".precio-compra-modificado").text(precioCompraModificado);
+
                         actualizarSumaTotalCosto();
                         // Actualiza el input oculto del stock
                         $(`input[name='stocks_${productoSeleccionado.id}']`).val(nuevoStockAnadido);
+                        // Actualiza el input oculto del precio de compra
+                        $(`input[name='precios_compra_${productoSeleccionado.id}']`).val(
+                            precioCompraModificado);
                     } else {
                         // Añadir fila a la tabla si el producto no existe en ella
                         var fila = `
@@ -391,9 +368,10 @@
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${productoSeleccionado.stock}</td>
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent stock-nuevo">${stock}</td>
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${productoSeleccionado.precio_compra}</td>
-                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${Math.round((productoSeleccionado.precio_compra*stock)*0.15)}</td>
+                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${precioCompraModificado}</td>
+                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${Math.round((precioCompraModificado*stock)*0.15)}</td>
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">${productoSeleccionado.precio_venta}</td>
-                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent costo-total">${productoSeleccionado.precio_compra*stock}</td>
+                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent costo-total">${precioCompraModificado*stock}</td>
                         <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"">
                             <button type="button" class="btn-borrar">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -410,17 +388,23 @@
                         var inputProducto =
                             `<input type="hidden" name="producto_ids[]" value="${productoSeleccionado.id}">`;
                         var inputStock = `<input type="hidden" name="stocks[]" value="${stock}">`;
+                        var inputPrecioCompra =
+                            `<input type="hidden" name="precios_compra[]" value="${precioCompraModificado}">`; // Nuevo input escondido
 
                         $("form").append(inputProducto);
                         $("form").append(inputStock);
+                        $("form").append(inputPrecioCompra);  // Añadir el nuevo input al formulario
+
                     }
 
                     // Limpiar selección e input
                     $("#productos").val('');
                     $("input[name='stock']").val('');
+                    $("input[name='precio_compra']").val('');
+
                     productoSeleccionado = null;
                 } else {
-                    swal("Error!", "Por favor, selecciona un producto y añade un stock válido", "error");
+                    swal("Error!", "Por favor, selecciona un producto, añade un stock o precio de compra válido", "error");
                 }
             });
             // Función para actualizar la suma total del costo
@@ -449,6 +433,7 @@
                 // Elimina los inputs ocultos relacionados con este producto
                 $(`input[name='producto_ids[]'][value='${productoId}']`).remove();
                 $(`input[name='stocks_${productoId}']`).remove();
+                $(`input[name='precios_compra_${productoId}']`).remove();  // Línea añadida para eliminar el input de precio de compra modificado
 
                 // Actualiza la suma total del costo después de borrar el producto
                 actualizarSumaTotalCosto();

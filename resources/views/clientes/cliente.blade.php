@@ -220,7 +220,7 @@
             let Id = $(this).data('id');
 
             Swal.fire({
-                title: "¿Estás seguro?",
+                title: "¿Estás seguro de eliminar este cliente?",
                 text: "Una vez eliminado, no podrás recuperar este registro!",
                 icon: "warning",
                 showCancelButton: true,

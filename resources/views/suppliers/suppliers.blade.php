@@ -177,7 +177,7 @@
                                         @endforeach
                                     @else
                                         <tr class="text-gray-700 dark:text-gray-400">
-                                            <td colspan="5">
+                                            <td colspan="8">
                                                 <div class="flex justify-center text-sm">
                                                     <div>
                                                         <p class="font-semibold">No hay proveedores</p>
@@ -207,7 +207,7 @@
             let Id = $(this).data('id');
 
             Swal.fire({
-                title: "¿Estás seguro de eliminar la subcategoria?",
+                title: "¿Estás seguro de eliminar el proveedor?",
                 text: "Los cambios no se revertirán",
                 icon: "warning",
                 showCancelButton: true,

@@ -170,7 +170,7 @@
             let Id = $(this).data('id');
 
             Swal.fire({
-                title: "¿Estás seguro de eliminar la subcategoria?",
+                title: "¿Estás seguro de eliminar esta compra?",
                 text: "Los cambios no se revertirán",
                 icon: "warning",
                 showCancelButton: true,

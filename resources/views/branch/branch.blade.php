@@ -160,7 +160,7 @@
             let marcaId = $(this).data('id');
 
             Swal.fire({
-                title: "¿Estás seguro?",
+                title: "¿Estás seguro de eliminar esta marca?",
                 text: "Una vez eliminado, no podrás recuperar este registro!",
                 icon: "warning",
                 showCancelButton: true,

@@ -11,11 +11,18 @@ use App\Models\DetalleCompra;
 class ComprasController extends Controller
 {
     //
+    //Constructor para validar usuario autentificado
+    public function __construct()
+    {
+        // Para verificar que el user este autenticado
+        // except() es para indicar cuales metodos pueden usarse sin autenticarse
+        $this->middleware('auth');
+    }
     //Función que dirigirá a la vista del listado de compras
     public function index()
     {
         $compras = Compra::with('supplier')->get();
-        return view('compras.compra',['compras'=>$compras]);
+        return view('compras.compra', ['compras' => $compras]);
     }
 
     //Funcion para redirigir a la vista de crear compra
@@ -48,22 +55,25 @@ class ComprasController extends Controller
     //Funcion para almacenar las compras en la base de datos
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'proveedor'=>'required',
-            'fecha'=>'required',
-            'referencia'=>'required|unique:compras',
-            'descripcion'=>'required',
-            'producto_ids'=>'required',
-            'stocks'=>'required'
-        ]); 
+        $this->validate($request, [
+            'proveedor' => 'required',
+            'fecha' => 'required',
+            'referencia' => 'required|unique:compras',
+            'descripcion' => 'required',
+            'producto_ids' => 'required',
+            'stocks' => 'required',
+            'precios_compra' => 'required' // Validar también los precios de compra
+
+        ]);
         $productoIds = $request->input('producto_ids');
         $stocks = $request->input('stocks');
+        $preciosCompraModificados = $request->input('precios_compra'); // Recoger los precios de compra modificados
 
         // Crear una nueva compra
         $compra = new Compra;
-        $compra->supplier_id=$request->proveedor;
-        $compra->descripcion=$request->descripcion;
-        $compra->referencia=$request->referencia;
+        $compra->supplier_id = $request->proveedor;
+        $compra->descripcion = $request->descripcion;
+        $compra->referencia = $request->referencia;
         $compra->fecha = $request->fecha; // o cualquier otra fecha que desees
         $compra->total = $request->input('costo_total'); // asumiendo que tienes un input con el total
         $compra->save();
@@ -73,6 +83,8 @@ class ComprasController extends Controller
             if ($producto) {
                 // Actualizar el stock del producto
                 $producto->stock += $stocks[$i];
+                // Actualizar el precio de compra del producto
+                $producto->precio_compra = $preciosCompraModificados[$i];
                 $producto->save();
 
                 // Guardar el detalle de la compra
@@ -89,16 +101,18 @@ class ComprasController extends Controller
     }
 
     //Funcion para redirigir a la vista de editar compra
-    public function show($id_compra){
-        $compra=Compra::with('supplier')->find($id_compra);
-        $detalle_compra=DetalleCompra::with('producto')->where('compra_id',$id_compra)->get();
-        return view('compras.viewCompra',compact('compra'),['detalle_compra'=>$detalle_compra]);
+    public function show($id_compra)
+    {
+        $compra = Compra::with('supplier')->find($id_compra);
+        $detalle_compra = DetalleCompra::with('producto')->where('compra_id', $id_compra)->get();
+        return view('compras.viewCompra', compact('compra'), ['detalle_compra' => $detalle_compra]);
     }
 
     //Funcion para eliminar compra
-    public function delete($id_compra){
-        $compra=Compra::find($id_compra)->delete();
-        $detalle_compra=DetalleCompra::where('compra_id',$id_compra)->delete();
-        return redirect()->route('compras.index')->with('success','La compra se ha eliminado correctamente');
+    public function delete($id_compra)
+    {
+        $compra = Compra::find($id_compra)->delete();
+        $detalle_compra = DetalleCompra::where('compra_id', $id_compra)->delete();
+        return redirect()->route('compras.index')->with('success', 'La compra se ha eliminado correctamente');
     }
 }

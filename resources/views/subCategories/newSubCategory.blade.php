@@ -69,8 +69,10 @@
                                                                 <option value="">Seleccione</option>
                                                                 @if (count($categorias) > 0)
                                                                     @foreach ($categorias as $categoria)
-                                                                        <option value="{{ $categoria->id }}">
-                                                                            {{ $categoria->nombre }}</option>
+                                                                        <option value="{{ $categoria->id }}"
+                                                                            {{ old('categoria') == $categoria->id ? 'selected' : '' }}>
+                                                                            {{ $categoria->nombre }}
+                                                                        </option>
                                                                     @endforeach
                                                                 @else
                                                                     <option value="">No hay categorias</option>
@@ -131,7 +133,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="imagen">
+                                            <input type="hidden" name="imagen" value="{{ old('imagen') }}">
                                             <div
                                                 class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                                                 <div class="flex justify-end flex-wrap -mx-3">

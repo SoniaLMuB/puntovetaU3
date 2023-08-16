@@ -49,15 +49,15 @@ class CategoriasController extends Controller
 
     //Ruta para retornar a la vista de editar categoria
     public function edit($id_categoria){
-        $categoria=Categoria::find($id_categoria)->get();
-        return view('categories.editCategory',['categoria'=>$categoria]);
+        $categoria=Categoria::find($id_categoria);
+        return view('categories.editCategory',['dato'=>$categoria]);
     }
     //Funcion para actualizar la categoria
     public function update(Request $request){
         //Validaciones de formulario
         $this->validate($request,[
             'nombre'=>'required',
-            'codigo'=>'required',
+            'codigo'=>'required|unique:categorias,codigo,'.$request->id,
             'descripcion'=>'required',
             'imagen'=>'required'
         ]);

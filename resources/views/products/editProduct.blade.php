@@ -49,8 +49,7 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre
                                                             de producto</label>
                                                         @error('nombre')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -64,8 +63,7 @@
                                                         <label for="codigo"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Código</label>
                                                         @error('codigo')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -79,8 +77,7 @@
                                                         <label for="categoria"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Categoria</label>
                                                         @error('categoria')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -117,8 +114,7 @@
                                                         <label for="subcategoria"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Subcategoria</label>
                                                         @error('subcategoria')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -130,13 +126,13 @@
                                                                     <option value="">Seleccione</option>
                                                                 </select>
                                                             @else
-                                                            <select value=""
-                                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
-                                                                name="subcategoria" id="subcategoria">
-                                                                <option value="">Seleccione</option>
-                                                            </select>
+                                                                <select value=""
+                                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                                                                    name="subcategoria" id="subcategoria">
+                                                                    <option value="">Seleccione</option>
+                                                                </select>
                                                             @endif
-                                                            
+
                                                             <div
                                                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                                                 <svg class="fill-current h-4 w-4"
@@ -155,8 +151,7 @@
                                                         <label for="marca"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Marca</label>
                                                         @error('marca')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -194,8 +189,7 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Precio
                                                             venta</label>
                                                         @error('precio_venta')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -214,8 +208,7 @@
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Precio
                                                             Compra</label>
                                                         @error('precio_compra')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -230,8 +223,7 @@
                                                         <label for="stock"
                                                             class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Stock</label>
                                                         @error('stock')
-                                                            <p
-                                                                class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                            <p class="text-red-500 my-2 text-sm text-center">
                                                                 {{ $message }}
                                                             </p>
                                                         @enderror
@@ -242,7 +234,7 @@
                                                 </div>
                                             </div>
                                             @error('imagen')
-                                                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                                <p class="text-red-500 my-2 text-sm text-center">
                                                     {{ $message }}
                                                 </p>
                                             @enderror
@@ -289,8 +281,8 @@
             var categoriaId = $('#categoria').val();
             console.log(categoriaId);
             var urlCategoria =
-                    "{{ route('subCategorias.getSubcategories', ['id_categoria' => 'ID_CATEGORIA']) }}"
-                    .replace('ID_CATEGORIA', categoriaId);
+                "{{ route('subCategorias.getSubcategories', ['id_categoria' => 'ID_CATEGORIA']) }}"
+                .replace('ID_CATEGORIA', categoriaId);
             // Función para cargar subcategorías
             function cargarSubcategorias(categoriaId, subcategoriaSeleccionada = null) {
                 if (categoriaId) {

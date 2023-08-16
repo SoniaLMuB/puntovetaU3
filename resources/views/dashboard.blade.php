@@ -282,10 +282,10 @@
                                         <p
                                             class="mb-0 font-sans text-sm font-semibold leading-normal uppercase dark:text-white dark:opacity-60">
                                             Gestor</p>
-                                        <h5 class="mb-2 font-bold dark:text-white">Proveedores</h5>
+                                        <h5 class="mb-2 font-bold dark:text-white">Proveedor</h5>
                                         <p class="mb-0 dark:text-white dark:opacity-60">
                                             <span
-                                                class="text-sm font-bold leading-normal text-emerald-500">Proveedores</span>
+                                                class="text-sm font-bold leading-normal text-emerald-500">Proveedor</span>
                                         </p>
                                     </div>
                                 </div>
@@ -393,18 +393,20 @@
                                             Gestor</p>
                                         <h5 class="mb-2 font-bold dark:text-white">Devolución</h5>
                                         <p class="mb-0 dark:text-white dark:opacity-60">
-                                            <span class="text-sm font-bold leading-normal text-emerald-500">Devoluciones</span>
+                                            <span
+                                                class="text-sm font-bold leading-normal text-emerald-500">Devoluciones</span>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="px-3 text-right basis-1/3">
                                     <div
                                         class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-emerald-500 to-teal-400">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24"
-                                        stroke-width="1.5" stroke="currentColor" class="text-lg relative top-3.5 text-white">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
-                                    </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            width="24" height="24" stroke-width="1.5" stroke="currentColor"
+                                            class="text-lg relative top-3.5 text-white">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -425,18 +427,19 @@
                                             Importar</p>
                                         <h5 class="mb-2 font-bold dark:text-white">Productos</h5>
                                         <p class="mb-0 dark:text-white dark:opacity-60">
-                                            <span class="text-sm font-bold leading-normal text-emerald-500">Devoluciones</span>
+                                            <span class="text-sm font-bold leading-normal text-emerald-500">Importar</span>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="px-3 text-right basis-1/3">
                                     <div
                                         class="flex justify-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-emerald-500 to-teal-400">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24"
-                                        stroke-width="1.5" stroke="currentColor" class="text-lg relative top-3.5 text-white">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12m9-7.243V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185z" />
-                                    </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            class="text-lg relative top-3.5 text-white" fill="currentColor"
+                                            class="bi bi-filetype-csv" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.517 14.841a1.13 1.13 0 0 0 .401.823c.13.108.289.192.478.252.19.061.411.091.665.091.338 0 .624-.053.859-.158.236-.105.416-.252.539-.44.125-.189.187-.408.187-.656 0-.224-.045-.41-.134-.56a1.001 1.001 0 0 0-.375-.357 2.027 2.027 0 0 0-.566-.21l-.621-.144a.97.97 0 0 1-.404-.176.37.37 0 0 1-.144-.299c0-.156.062-.284.185-.384.125-.101.296-.152.512-.152.143 0 .266.023.37.068a.624.624 0 0 1 .246.181.56.56 0 0 1 .12.258h.75a1.092 1.092 0 0 0-.2-.566 1.21 1.21 0 0 0-.5-.41 1.813 1.813 0 0 0-.78-.152c-.293 0-.551.05-.776.15-.225.099-.4.24-.527.421-.127.182-.19.395-.19.639 0 .201.04.376.122.524.082.149.2.27.352.367.152.095.332.167.539.213l.618.144c.207.049.361.113.463.193a.387.387 0 0 1 .152.326.505.505 0 0 1-.085.29.559.559 0 0 1-.255.193c-.111.047-.249.07-.413.07-.117 0-.223-.013-.32-.04a.838.838 0 0 1-.248-.115.578.578 0 0 1-.255-.384h-.765ZM.806 13.693c0-.248.034-.46.102-.633a.868.868 0 0 1 .302-.399.814.814 0 0 1 .475-.137c.15 0 .283.032.398.097a.7.7 0 0 1 .272.26.85.85 0 0 1 .12.381h.765v-.072a1.33 1.33 0 0 0-.466-.964 1.441 1.441 0 0 0-.489-.272 1.838 1.838 0 0 0-.606-.097c-.356 0-.66.074-.911.223-.25.148-.44.359-.572.632-.13.274-.196.6-.196.979v.498c0 .379.064.704.193.976.131.271.322.48.572.626.25.145.554.217.914.217.293 0 .554-.055.785-.164.23-.11.414-.26.55-.454a1.27 1.27 0 0 0 .226-.674v-.076h-.764a.799.799 0 0 1-.118.363.7.7 0 0 1-.272.25.874.874 0 0 1-.401.087.845.845 0 0 1-.478-.132.833.833 0 0 1-.299-.392 1.699 1.699 0 0 1-.102-.627v-.495Zm8.239 2.238h-.953l-1.338-3.999h.917l.896 3.138h.038l.888-3.138h.879l-1.327 4Z" />
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -444,6 +447,11 @@
                     </div>
                 </a>
             </div>
+        </div>
+        <div class="flex flex-wrap mt-6 -mx-3" style="width:50%;display: flex;
+        justify-content: center;">
+            <h5 class="mb-2 font-bold dark:text-white">Productos más vendidos</h5>
+            <canvas id="salesChart" width="300" height="100"></canvas>
         </div>
 
         <footer class="pt-4">
@@ -462,5 +470,33 @@
             </div>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {!! $productos !!}, // Los nombres de los productos
+                datasets: [{
+                    label: 'Productos más vendidos',
+                    data: {!! $totals !!}, // Las cantidades vendidas
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        // ... Puedes agregar más colores aquí
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        // ... Igualmente, más colores aquí
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
     <!-- end cards -->
 @endsection

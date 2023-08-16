@@ -185,7 +185,7 @@
                                                                         </td>
                                                                         <td
                                                                             class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                                                            {{$dato->precio_compra}}
+                                                                            {{$dato->precio_cotizacion}}
                                                                         </td>
                                                                         <td
                                                                             class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">

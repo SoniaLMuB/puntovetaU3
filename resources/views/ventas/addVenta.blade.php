@@ -46,21 +46,21 @@
                     <div class="container max-w-7xl mx-auto px-4" style="cursor: auto;">
                         <div class="flex flex-wrap" id="productos">
                             <!--
-                                                                                                        <div class="w-full md:w-4/12 lg:w-3/12 lg:mb-0 mb-3 p-4">
-                                                                                                            <div class="p-4 shadow-2xl rounded-xl">
-                                                                                                                <img alt="John Doe" src="https://dummyimage.com/300"
-                                                                                                                    class="rounded-xl shadow-lg max-w-full h-auto align-middle border-none">
-                                                                                                                <div class="pt-3 text-center">
-                                                                                                                    <h4 class="text-gray-900 font-serif font-bold leading-normal mt-0 mb-0">
-                                                                                                                        John Doe
-                                                                                                                    </h4>
-                                                                                                                    <p class="text-blue-gray-700 text-base font-light leading-relaxed mt-0 mb-2">
-                                                                                                                        CEO
-                                                                                                                    </p>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        --->
+                                                                                                                    <div class="w-full md:w-4/12 lg:w-3/12 lg:mb-0 mb-3 p-4">
+                                                                                                                        <div class="p-4 shadow-2xl rounded-xl">
+                                                                                                                            <img alt="John Doe" src="https://dummyimage.com/300"
+                                                                                                                                class="rounded-xl shadow-lg max-w-full h-auto align-middle border-none">
+                                                                                                                            <div class="pt-3 text-center">
+                                                                                                                                <h4 class="text-gray-900 font-serif font-bold leading-normal mt-0 mb-0">
+                                                                                                                                    John Doe
+                                                                                                                                </h4>
+                                                                                                                                <p class="text-blue-gray-700 text-base font-light leading-relaxed mt-0 mb-2">
+                                                                                                                                    CEO
+                                                                                                                                </p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    --->
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="flex-auto p-4 pt-6">
-                        <form action="{{route('ventas.create')}}" method="POST" id="formVenta" role="form text-left">
+                        <form action="{{ route('ventas.create') }}" method="POST" id="formVenta" role="form text-left">
                             @csrf
                             <div class="mb-4">
                                 <label for="cliente">Cliente:</label>
@@ -268,6 +268,37 @@
                 });
             }
 
+            function assignDeleteProductEvent() {
+                document.querySelectorAll('.delete-product').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        console.log("Botón eliminar presionado");
+
+                        // Obtener el productId del producto a eliminar
+                        const productId = this.closest('li').getAttribute('data-id');
+
+                        // Encuentra el elemento <li> más cercano y lo elimina
+                        this.closest('li').remove();
+                        removeProductInputs(productId);
+
+                        // Actualizar los totales
+                        updateTotals();
+                    });
+                });
+            }
+            // Función para eliminar inputs relacionados con un producto específico
+            function removeProductInputs(productId) {
+                const productIdFields = formVenta.querySelectorAll(
+                    `[name="producto_id[]"][value="${productId}"]`
+                );
+                const productQuantityFields = formVenta
+                    .querySelectorAll(
+                        `[data-product-id="${productId}"]`);
+
+                productIdFields.forEach(field => field.remove());
+                productQuantityFields.forEach(field => field
+                    .remove());
+
+            }
 
             selectElement.addEventListener('change', function() {
                 const selectedValue = this.value;
@@ -338,6 +369,8 @@
                                     const shopProductos = document.getElementById(
                                         'shopProductos');
                                     shopProductos.insertAdjacentHTML('beforeend', html);
+                                    // Llama a la función para asignar el evento a los botones de eliminar
+                                    assignDeleteProductEvent();
                                 }
                                 // Añadir escuchador de eventos para actualizar totales cuando se cambia la cantidad
                                 shopProductos.querySelector(
@@ -347,32 +380,6 @@
                                 // Actualizar totales
                                 updateTotals();
 
-                                // Función para eliminar inputs relacionados con un producto específico
-                                function removeProductInputs(productId) {
-                                    const productIdFields = formVenta.querySelectorAll(
-                                        `[name="producto_id[]"][value="${productId}"]`
-                                    );
-                                    const productQuantityFields = formVenta
-                                        .querySelectorAll(
-                                            `[data-product-id="${productId}"]`);
-
-                                    productIdFields.forEach(field => field.remove());
-                                    productQuantityFields.forEach(field => field
-                                        .remove());
-                                }
-
-                                // Agregamos el escuchador de eventos al botón de eliminar
-                                document.querySelectorAll('.delete-product').forEach(
-                                    btn => {
-                                        btn.addEventListener('click', function() {
-                                            // Encuentra el elemento <li> más cercano y lo elimina
-                                            this.closest('li').remove();
-                                            removeProductInputs(
-                                                productId
-                                            ); // Elimina los inputs del producto en el formulario
-                                            updateTotals();
-                                        });
-                                    });
                             });
                         });
 

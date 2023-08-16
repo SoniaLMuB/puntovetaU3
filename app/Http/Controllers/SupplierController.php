@@ -74,7 +74,7 @@ class SupplierController extends Controller
             //Validaciones de formulario
             $this->validate($request, [
                 'nombre' => 'required',
-                'codigo' => 'required',
+                'codigo' => 'required|unique:suppliers,codigo,'.$request->id,
                 'telefono'=>'required',
                 'email'=>'required|email',
                 'pais'=>'required',

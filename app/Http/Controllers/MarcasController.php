@@ -50,8 +50,8 @@ class MarcasController extends Controller
     //Funcion para retornar a la vista de retornar marca
     public function view($id_marca)
     {
-        $marcas = Marca::find($id_marca)->get();
-        return view('branch.editBranch', ['marcas' => $marcas]);
+        $marcas = Marca::find($id_marca);
+        return view('branch.editBranch', ['marca' => $marcas]);
     }
 
     //Función para actualizar los datos de la marca en la base de datos

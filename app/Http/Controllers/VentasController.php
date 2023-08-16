@@ -13,6 +13,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class VentasController extends Controller
 {
+    //Constructor para validar usuario autentificado
+    public function __construct()
+    {
+        // Para verificar que el user este autenticado
+        // except() es para indicar cuales metodos pueden usarse sin autenticarse
+        $this->middleware('auth');
+    }
     //Función que dirigirá a la vista del listado de ventas
     public function index()
     {
@@ -107,29 +114,31 @@ class VentasController extends Controller
     }
 
     //Funcion para registrar la devolución en la base de datos
-    public function devolver(Request $request){
+    public function devolver(Request $request)
+    {
 
-        $detalle = DetalleVenta::find($request->input('id'));    
+        $detalle = DetalleVenta::find($request->input('id'));
         $cantidadDevuelta = $request->input('qty');
         $detalle->cantidad -= $cantidadDevuelta;
-    
+
         if ($detalle->cantidad <= 0) {
             $detalle->status = 0;
             $detalle->cantidad = 0;
         }
-    
+
         $detalle->save();
 
         //Se obtiene el ID de la venta
         $venta = DetalleVenta::where('id', $request->id)->select('venta_id')->first();
 
         //Se ingresa la informacion al modelo de devoluciones
-        $customer = Venta::where('id',$venta->venta_id)->select('customer_id')->first();
+        $customer = Venta::where('id', $venta->venta_id)->select('customer_id')->first();
 
         //Se añaden los campos en el modelo de Devolucion
         $devolucion = new Devolucion;
         $devolucion->venta_id = $venta->venta_id;
-        $devolucion->producto_id= $request->producto_id;
+        $devolucion->cantidad = $cantidadDevuelta;
+        $devolucion->producto_id = $request->producto_id;
         $devolucion->customer_id = $customer->customer_id;
         $devolucion->fecha = now();
         $devolucion->save();

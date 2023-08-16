@@ -41,7 +41,7 @@ class subCategoriaController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'categoria' => 'required',
-            'codigo' => 'required',
+            'codigo' => 'required|unique:subcategoria',
             'descripcion' => 'required',
             'imagen' => 'required'
         ]);
@@ -74,7 +74,7 @@ class subCategoriaController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'categoria' => 'required',
-            'codigo' => 'required',
+            'codigo' => 'required|unique:subcategoria,codigo,'.$request->id,
             'descripcion' => 'required',
             'imagen' => 'required'
         ]);

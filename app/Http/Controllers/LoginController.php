@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -23,6 +24,12 @@ class LoginController extends Controller
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
             // back() para volver a la pagina anterior, en este caso, con un mensaje
             return back()->with('errors', 'Credenciales Incorrectas');
+        }
+
+        $status= User::where('email',$request->email)->select('status')->first();
+
+        if($status->status==0){
+            return back()->with('errors', 'El usuario está incativo');
         }
 
         // Redirecciona

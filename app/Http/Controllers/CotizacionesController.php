@@ -11,11 +11,19 @@ use Illuminate\Http\Request;
 class CotizacionesController extends Controller
 {
 
+    //Constructor para validar usuario autentificado
+    public function __construct()
+    {
+        // Para verificar que el user este autenticado
+        // except() es para indicar cuales metodos pueden usarse sin autenticarse
+        $this->middleware('auth');
+    }
+
     //Función que dirigirá a la vista del listado de cotizaciones
     public function index()
     {
         $cotizaciones = Cotizacion::with('supplier')->get();
-        return view('cotizaciones.cotizaciones',['cotizaciones'=>$cotizaciones]);
+        return view('cotizaciones.cotizaciones', ['cotizaciones' => $cotizaciones]);
     }
 
     //Funcion para redirigir a la vista de crear cotizacion
@@ -49,22 +57,22 @@ class CotizacionesController extends Controller
     //Funcion para almacenar las cotizaciones en la base de datos
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'proveedor'=>'required',
-            'fecha'=>'required',
-            'referencia'=>'required|unique:cotizaciones',
-            'descripcion'=>'required',
-            'producto_ids'=>'required',
-            'stocks'=>'required'
-        ]); 
+        $this->validate($request, [
+            'proveedor' => 'required',
+            'fecha' => 'required',
+            'referencia' => 'required|unique:cotizaciones',
+            'descripcion' => 'required',
+            'producto_ids' => 'required',
+            'stocks' => 'required'
+        ]);
         $productoIds = $request->input('producto_ids');
         $stocks = $request->input('stocks');
 
         // Crear una nueva cotización
         $cotizacion = new Cotizacion;
-        $cotizacion->supplier_id=$request->proveedor;
-        $cotizacion->descripcion=$request->descripcion;
-        $cotizacion->referencia=$request->referencia;
+        $cotizacion->supplier_id = $request->proveedor;
+        $cotizacion->descripcion = $request->descripcion;
+        $cotizacion->referencia = $request->referencia;
         $cotizacion->fecha = $request->fecha; // o cualquier otra fecha que desees
         $cotizacion->total = $request->input('costo_total'); // asumiendo que tienes un input con el total
         $cotizacion->save();
@@ -72,14 +80,12 @@ class CotizacionesController extends Controller
         for ($i = 0; $i < count($productoIds); $i++) {
             $producto = Producto::find($productoIds[$i]);
             if ($producto) {
-
                 // Guardar el detalle de la cotizacion
                 $detalle = new DetalleCotizacion;
                 $detalle->cotizacion_id = $cotizacion->id;
                 $detalle->producto_id = $producto->id;
                 $detalle->stock = $stocks[$i];
-                $detalle->precio_cotizacion = $producto->precio_cotizacion;
-                dd($detalle->precio_cotizacion);
+                $detalle->precio_cotizacion = $producto->precio_compra;
                 $detalle->save();
             }
         }
@@ -88,16 +94,18 @@ class CotizacionesController extends Controller
     }
 
     //Funcion para redirigir a la vista de editar cotizacion
-    public function show($id_cotizacion){
-        $cotizacion=Cotizacion::with('supplier')->find($id_cotizacion);
-        $detalle_cotizacion=DetalleCotizacion::with('producto')->where('cotizacion_id',$id_cotizacion)->get();
-        return view('cotizaciones.viewCotizacion',compact('cotizacion'),['detalle_cotizacion'=>$detalle_cotizacion]);
+    public function show($id_cotizacion)
+    {
+        $cotizacion = Cotizacion::with('supplier')->find($id_cotizacion);
+        $detalle_cotizacion = DetalleCotizacion::with('producto')->where('cotizacion_id', $id_cotizacion)->get();
+        return view('cotizaciones.viewCotizacion', compact('cotizacion'), ['detalle_cotizacion' => $detalle_cotizacion]);
     }
 
     //Funcion para eliminar cotizacion
-    public function delete($id_cotizacion){
-        $cotizacion=Cotizacion::find($id_cotizacion)->delete();
-        $detalle_cotizacion=DetalleCotizacion::where('cotizacion_id',$id_cotizacion)->delete();
-        return redirect()->route('cotizaciones.index')->with('success','La cotizacion se ha eliminado correctamente');
+    public function delete($id_cotizacion)
+    {
+        $cotizacion = Cotizacion::find($id_cotizacion)->delete();
+        $detalle_cotizacion = DetalleCotizacion::where('cotizacion_id', $id_cotizacion)->delete();
+        return redirect()->route('cotizaciones.index')->with('success', 'La cotizacion se ha eliminado correctamente');
     }
 }
