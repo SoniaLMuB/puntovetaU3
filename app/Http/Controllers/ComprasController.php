@@ -29,7 +29,7 @@ class ComprasController extends Controller
     public function create()
     {
         $proveedores = Supplier::all();
-        $productos = Producto::all();
+        $productos = Producto::where('status',1)->get();
         return view('compras.addcompra', ['proveedores' => $proveedores, 'productos' => $productos]);
     }
 

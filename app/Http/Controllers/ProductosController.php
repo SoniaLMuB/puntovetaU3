@@ -20,10 +20,7 @@ class ProductosController extends Controller
     }
     //Funcion para retornar la vista de productos
     public function index(){
-        $productos=Producto::all();
-        $title = 'Delete User!';
-        $text = "Are you sure you want to delete?";
-        confirmDelete($title, $text);
+        $productos=Producto::where('status',1)->get();
         
         return view('products.products',["productos"=>$productos]);
     }
@@ -111,7 +108,9 @@ class ProductosController extends Controller
        //Funcion para eliminar categorias
     public function delete($id_producto){
         //Se busca la categoria en el modelo y se elimina
-        Producto::find($id_producto)->delete();
+        Producto::where('id',$id_producto)->update([
+            'status'=>0,
+        ]);
         return redirect()->route('productos.index')->with('success','El producto se ha eliminado correctamente');
 
     }

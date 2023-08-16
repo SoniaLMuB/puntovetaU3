@@ -55,11 +55,14 @@ class VentasController extends Controller
     public function getProductos($categoria_id)
     {
         if ($categoria_id == 'all') {
-            $productos = Producto::where('stock', '>', 0)->get();
+            $productos = Producto::where('stock', '>', 0)
+            ->where('status',1)
+            ->get();
         } else {
             $productos = Producto::with('categoria')
                 ->where('categoria_id', $categoria_id)
                 ->where('stock', '>', 0)
+                ->where('status',1)
                 ->get();
         }
 
@@ -75,6 +78,7 @@ class VentasController extends Controller
             'producto_id' => 'required',
             'producto_cantidad' => 'required'
         ]);
+        
         //Se hacen las inserciones por medio del objeto venta
         $venta = new Venta;
         $venta->customer_id = $request->input('cliente');

@@ -46,21 +46,21 @@
                     <div class="container max-w-7xl mx-auto px-4" style="cursor: auto;">
                         <div class="flex flex-wrap" id="productos">
                             <!--
-                                                                                                                    <div class="w-full md:w-4/12 lg:w-3/12 lg:mb-0 mb-3 p-4">
-                                                                                                                        <div class="p-4 shadow-2xl rounded-xl">
-                                                                                                                            <img alt="John Doe" src="https://dummyimage.com/300"
-                                                                                                                                class="rounded-xl shadow-lg max-w-full h-auto align-middle border-none">
-                                                                                                                            <div class="pt-3 text-center">
-                                                                                                                                <h4 class="text-gray-900 font-serif font-bold leading-normal mt-0 mb-0">
-                                                                                                                                    John Doe
-                                                                                                                                </h4>
-                                                                                                                                <p class="text-blue-gray-700 text-base font-light leading-relaxed mt-0 mb-2">
-                                                                                                                                    CEO
-                                                                                                                                </p>
+                                                                                                                            <div class="w-full md:w-4/12 lg:w-3/12 lg:mb-0 mb-3 p-4">
+                                                                                                                                <div class="p-4 shadow-2xl rounded-xl">
+                                                                                                                                    <img alt="John Doe" src="https://dummyimage.com/300"
+                                                                                                                                        class="rounded-xl shadow-lg max-w-full h-auto align-middle border-none">
+                                                                                                                                    <div class="pt-3 text-center">
+                                                                                                                                        <h4 class="text-gray-900 font-serif font-bold leading-normal mt-0 mb-0">
+                                                                                                                                            John Doe
+                                                                                                                                        </h4>
+                                                                                                                                        <p class="text-blue-gray-700 text-base font-light leading-relaxed mt-0 mb-2">
+                                                                                                                                            CEO
+                                                                                                                                        </p>
+                                                                                                                                    </div>
+                                                                                                                                </div>
                                                                                                                             </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    --->
+                                                                                                                            --->
                         </div>
                     </div>
                 </div>
@@ -92,15 +92,17 @@
                                     <option value="">Selecciona una opción</option>
                                     @if ($clientes->count())
                                         @foreach ($clientes as $client)
-                                            <option value="{{ $client->id }}">{{ $client->nombre }}</option>
+                                            <option value="{{ $client->id }}"
+                                                {{ old('cliente') == $client->id ? 'selected' : '' }}>
+                                                {{ $client->nombre }}
+                                            </option>
                                         @endforeach
                                     @endif
                                 </select>
                                 @error('categoria')
-                                    <span
-                                        class="mt-1 py-2.2 px-3.6 text-xs rounded-1.8 inline-block whitespace-nowrap text-center bg-red-200 text-red-700 align-baseline font-bold uppercase leading-none">
+                                    <p class="text-red-500 my-2 rounded-lg text-sm text-center">
                                         {{ $message }}
-                                    </span>
+                                    </p>
                                 @enderror
                             </div>
                             <div class="mb-4">
@@ -109,10 +111,9 @@
                                     class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 @error('codigo') border-red-500 @enderror bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                     placeholder="Referencia..." aria-label="referencia" aria-describedby="email-addon" />
                                 @error('referencia')
-                                    <span
-                                        class="mt-1 py-2.2 px-3.6 text-xs rounded-1.8 inline-block whitespace-nowrap text-center bg-red-200 text-red-700 align-baseline font-bold uppercase leading-none">
+                                    <p class="text-red-500 my-2 rounded-lg text-sm text-center">
                                         {{ $message }}
-                                    </span>
+                                    </p>
                                 @enderror
                             </div>
 
